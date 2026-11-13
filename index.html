@@ -1,0 +1,1426 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cronograma 49º Exame · Master5 OAB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#15172B; --orange:#D7683D; --blue:#8896BE; --sand:#E8A062; --paper:#F3F1EF;
+    --white:#FFFFFF; --muted:#5E6176; --line:#DDD8D2; --soft:#E9E6F0;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--navy);font-family:'Poppins',system-ui,sans-serif;font-size:15px;line-height:1.55}
+  h1,h2,h3{font-family:'Georgia Pro',Georgia,'Times New Roman',serif;font-weight:700;margin:0;letter-spacing:-.01em}
+  .wrap{max-width:920px;margin:0 auto;padding:0 16px}
+
+  header.top{background:var(--navy);color:var(--white)}
+  header.top .wrap{display:flex;align-items:center;gap:12px;padding-top:14px;padding-bottom:14px}
+  header.top svg{width:40px;height:40px;flex:none}
+  .brand b{display:block;font-family:Georgia,serif;font-size:18px;letter-spacing:.01em}
+  .brand span{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--sand)}
+
+  .hero{padding:40px 0 24px}
+  .hero h1{font-size:clamp(28px,5vw,40px);line-height:1.15;max-width:640px}
+  .hero h1 em{font-style:normal;color:var(--orange)}
+  .hero p{color:var(--muted);max-width:600px;margin:12px 0 0}
+
+  .card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:22px;margin-bottom:16px}
+  .step{display:flex;align-items:baseline;gap:10px;margin-bottom:16px}
+  .step i{font-style:normal;font-family:Georgia,serif;font-weight:700;color:var(--orange);font-size:20px}
+  .step h2{font-size:20px}
+  .step small{display:block;color:var(--muted);font-size:13px;font-family:'Poppins',sans-serif;font-weight:400;margin-top:2px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+  label{display:block;font-size:13px;font-weight:500;margin-bottom:6px}
+  input,select{width:100%;font:inherit;color:var(--navy);background:var(--white);border:1px solid var(--line);border-radius:10px;padding:10px 12px;outline:none}
+  input:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(136,150,190,.25)}
+  .hint{font-size:12px;color:var(--muted);margin-top:6px}
+
+  .days-pick{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+  .days-pick div{text-align:center}
+  .days-pick label{text-align:center;margin-bottom:4px}
+  .days-pick select{padding:9px 4px;text-align:center}
+  .weekly{margin-top:12px;font-size:13px;color:var(--muted)}
+  .weekly b{color:var(--navy)}
+
+  .mat-list{display:grid;gap:8px}
+  .mat{display:grid;grid-template-columns:1fr 200px;align-items:center;gap:12px;padding:8px 0;border-bottom:1px dashed var(--line)}
+  .mat:last-child{border-bottom:0}
+  .mat .nm{font-weight:500}
+  .mat .pw{font-size:12px;color:var(--muted)}
+
+  .actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0 40px}
+  button{font:inherit;font-weight:600;border-radius:10px;padding:12px 20px;cursor:pointer;border:1px solid var(--navy)}
+  .btn-main{background:var(--navy);color:var(--white)}
+  .btn-main:hover{background:#25284a}
+  .btn-orange{background:var(--orange);border-color:var(--orange);color:var(--white)}
+  .btn-orange:hover{background:#c55a31}
+  .btn-ghost{background:transparent;color:var(--navy)}
+  .err{color:#B23A1E;font-size:14px;font-weight:500}
+
+  #resultado{display:none;padding-bottom:60px}
+  .res-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px;margin:8px 0 18px}
+  .res-head h2{font-size:28px}
+  .res-head p{margin:4px 0 0;color:var(--muted)}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:16px}
+  .stat{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:16px}
+  .stat b{display:block;font-family:Georgia,serif;font-size:26px}
+  .stat span{font-size:13px;color:var(--muted)}
+
+  .bars{display:grid;gap:10px}
+  .bar-row{display:grid;grid-template-columns:minmax(120px,240px) 1fr 70px;gap:10px;align-items:center;font-size:14px}
+  .bar{height:10px;background:var(--soft);border-radius:6px;overflow:hidden}
+  .bar i{display:block;height:100%;background:var(--blue);border-radius:6px}
+  .bar-row.fraca .bar i{background:var(--orange)}
+  .bar-row .hh{text-align:right;color:var(--muted)}
+
+  .metodo{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+  .metodo h3{font-size:16px;margin-bottom:6px}
+  .metodo ol,.metodo ul{margin:0;padding-left:18px;font-size:14px}
+  .metodo li{margin-bottom:4px}
+  .metodo .k{color:var(--orange);font-weight:600}
+
+  details.week{background:var(--white);border:1px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+  details.week summary{list-style:none;cursor:pointer;padding:14px 18px;display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
+  details.week summary::-webkit-details-marker{display:none}
+  details.week summary b{font-family:Georgia,serif;font-size:17px}
+  details.week summary .dt{color:var(--muted);font-size:13px}
+  details.week summary .hw{margin-left:auto;font-size:13px;color:var(--muted)}
+  details.week[open] summary{border-bottom:1px solid var(--line)}
+  .tag{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:20px;border:1px solid var(--orange);color:var(--orange)}
+  .day{display:grid;grid-template-columns:110px 1fr 1fr;gap:14px;padding:12px 18px;border-bottom:1px dashed var(--line);font-size:14px}
+  .day:last-child{border-bottom:0}
+  .day .dn b{display:block}
+  .day .dn span{color:var(--muted);font-size:12px}
+  .day h4{margin:0 0 4px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .blk{margin-bottom:3px}
+  .blk em{font-style:normal;color:var(--muted);font-size:12px}
+  .day.folga{color:var(--muted);background:#FAF9F7}
+  .day.simulado,.day.correcao{background:#FBF4F0}
+  .day.revisao{background:#F1F3F9}
+  .day .mt{font-weight:600}
+  .day ol.passos{margin:0;padding-left:18px}
+  .day ol.passos li{margin-bottom:2px}
+  .day ol.passos em,.day .note{font-style:normal;color:var(--muted);font-size:12px}
+  .wk-mats{flex-basis:100%;font-size:13px;color:var(--muted)}
+  .tops{margin:6px 0 0;padding:0;list-style:none}
+  .tops li{position:relative;padding-left:14px;margin-bottom:3px;font-size:13.5px;line-height:1.4}
+  .tops li::before{content:'';position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%;background:var(--orange)}
+  .tag-ref{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--orange);margin-left:6px}
+  .rev-m{margin-bottom:6px}
+  details.week summary .wk-mats b{font-family:'Poppins',sans-serif;font-size:13px;color:var(--navy);font-weight:500}
+  .rev-item{margin-bottom:2px}
+  .rev-item em{font-style:normal;font-size:12px;color:var(--blue);font-weight:600}
+
+  footer{text-align:center;font-size:12px;color:var(--muted);padding:24px 0 40px}
+
+  /* abas */
+  .tabs-bar{background:var(--white);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+  .tabs{display:flex;gap:4px}
+  .tabs button{background:none;border:0;border-bottom:3px solid transparent;border-radius:0;padding:14px 14px 11px;font-weight:600;color:var(--muted)}
+  .tabs button.on{color:var(--navy);border-bottom-color:var(--orange)}
+  .tab[hidden]{display:none}
+  /* análise de simulado */
+  .sim-group{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:6px 0 4px}
+  .sim-row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px;padding:8px 0;border-bottom:1px dashed var(--line)}
+  .sim-row:last-child{border-bottom:0}
+  .sim-row .nm{font-weight:500}
+  .sim-row .pw{font-size:12px;color:var(--muted)}
+  .stepper{display:flex;align-items:center;gap:6px}
+  .stepper button{width:38px;height:38px;padding:0;border-radius:10px;background:var(--white);border:1px solid var(--line);color:var(--navy);font-size:18px;line-height:1}
+  .stepper input{width:64px;text-align:center;padding:8px 6px}
+  .stepper input.bad{border-color:#B23A1E;box-shadow:0 0 0 3px rgba(178,58,30,.18)}
+  .stepper small{font-size:13px;color:var(--muted);min-width:34px}
+  .total-line{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-weight:600}
+  .total-line b{font-family:Georgia,serif;font-size:22px}
+  .err-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+  .warn{font-size:13px;color:#9A4A1E;margin-top:8px}
+  .stat.ok b{color:#3D5A9E}
+  .stat.no b{color:var(--orange)}
+  .bar-row .hh small{display:block;font-size:11px}
+  #simBars .bar-row{grid-template-columns:minmax(120px,240px) 1fr 86px}
+  .b-crit .bar i{background:var(--orange)}
+  .b-at .bar i{background:var(--sand)}
+  .b-ok .bar i{background:var(--blue)}
+  .up{color:#3D5A9E;font-weight:600}
+  .down{color:var(--orange);font-weight:600}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--muted);margin-top:10px}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+  .prio{display:grid;grid-template-columns:34px 1fr;gap:12px;padding:14px 0;border-bottom:1px dashed var(--line)}
+  .prio:last-child{border-bottom:0}
+  .prio .n{font-family:Georgia,serif;font-weight:700;font-size:22px;color:var(--orange)}
+  .prio h3{font-size:17px;margin-bottom:2px}
+  .prio .meta{font-size:13px;color:var(--muted)}
+  .prio .acao{margin-top:6px;font-size:14px}
+  .prio .acao b{color:var(--navy)}
+  .callout{background:#FBF4F0;border:1px solid #F0D6C7;border-radius:12px;padding:14px 16px;font-size:14px;margin-top:12px}
+  .hist{width:100%;border-collapse:collapse;font-size:14px;margin-top:12px}
+  .hist td,.hist th{padding:8px 6px;border-bottom:1px solid var(--line);text-align:left}
+  .hist th{font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+  .hist .x{background:none;border:0;padding:4px 8px;color:var(--muted);font-weight:500;font-size:13px;text-decoration:underline}
+  .notice{background:#F1F3F9;border:1px solid #D9DEEC;border-radius:12px;padding:12px 16px;font-size:14px;margin-bottom:16px}
+  #simRes{display:none;padding-bottom:60px}
+  /* relatório A4 */
+  #rpWrap{position:relative;overflow:hidden}
+  #rpScale{width:794px;transform-origin:top left}
+  .rp{position:relative;width:794px;height:1123px;background:#fff;border:1px solid var(--line);margin-bottom:18px;overflow:hidden;color:#34374B;font-family:'Poppins',sans-serif;font-size:11.2px;line-height:1.6}
+  .rp-top{position:absolute;left:0;right:0;top:0;height:9px;background:var(--navy);border-bottom:2px solid var(--orange)}
+  .rp-logo{position:absolute;right:52px;top:34px;width:40px;height:40px}
+  .rp-body{padding:52px 58px 70px}
+  .rp-foot{position:absolute;left:58px;right:58px;bottom:26px;display:flex;justify-content:space-between;font-size:9.5px;color:#8A8C9C;border-top:1px solid #EEE9E3;padding-top:8px}
+  .rp-kicker{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);font-weight:600;margin-top:4px}
+  .rp-h1{font-family:'Georgia Pro',Georgia,serif;font-weight:400;font-size:31px;line-height:1.2;color:var(--navy);margin:10px 0 22px;letter-spacing:-.01em}
+  .rp-h2{font-family:'Georgia Pro',Georgia,serif;font-weight:400;font-size:19px;color:var(--navy);margin:18px 0 7px}
+  .rp-h2.first{margin-top:6px}
+  .rp p{margin:0 0 10px}
+  .rp b{color:var(--navy);font-weight:600}
+  .rp .hl{color:var(--orange);font-weight:600}
+  .rp-note{font-size:10px;color:#6B6E80}
+  .rp-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+  .rp-stats div{background:var(--paper);padding:14px 16px}
+  .rp-stats b{display:block;font-family:'Georgia Pro',Georgia,serif;font-weight:400;font-size:25px;color:var(--navy);line-height:1.2}
+  .rp-stats span{font-size:9.5px;color:#6B6E80}
+  .rp-stats .dk{background:var(--navy)}
+  .rp-stats .dk b,.rp-stats .dk span{color:#fff}
+  .rp-chart{position:relative;margin:12px 0 0;padding-bottom:24px}
+  .rc-row{display:grid;grid-template-columns:150px 1fr;gap:8px;align-items:center;height:19px}
+  .rc-l{text-align:right;font-size:10px;color:#34374B}
+  .rc-t{position:relative;height:100%;margin-right:44px;border-left:1px solid #D9D4CD}
+  .rc-t i{position:absolute;left:0;top:4px;height:11px;background:var(--navy)}
+  .rc-t i.o{background:var(--orange)}
+  .rc-t em{position:absolute;top:1px;font-style:normal;font-size:9.5px;color:#34374B;left:calc(var(--w,0%) + 4px)}
+  .rc-grid{position:absolute;left:158px;right:44px;bottom:0;height:14px}
+  .rc-grid span{position:absolute;transform:translateX(-50%);font-size:9px;color:#8A8C9C}
+  .rc-cut{position:absolute;left:calc(158px + (100% - 202px)/2);top:0;bottom:16px;border-left:1.5px dashed #B9BBC8}
+  .rc-cut b{position:absolute;bottom:2px;left:6px;font-size:9px;color:#8A8C9C;font-weight:400;white-space:nowrap}
+  .rp-tb{width:100%;border-collapse:collapse;margin:8px 0 12px;font-size:10.5px}
+  .rp-tb th{background:var(--navy);color:#fff;text-align:left;font-weight:500;padding:7px 10px}
+  .rp-tb.or th{background:var(--orange)}
+  .rp-tb td{padding:5.5px 10px;border-bottom:1px solid #EEE9E3;vertical-align:top;line-height:1.45}
+  .rp-tb tbody tr:nth-child(odd) td{background:#FAF8F6}
+  .rp-tb small{display:block;color:#7A7D8E;font-size:9.5px;margin-top:2px}
+  .rp-fill td{padding:3px 10px;border-right:1px solid #EEE9E3}
+  .rp-fill tr.tt td{font-weight:600;color:var(--navy);background:#F1EEEA}
+  .rp-steps{list-style:none;margin:6px 0 12px;padding:0}
+  .rp-steps li{display:grid;grid-template-columns:28px 1fr;gap:8px;padding:4px 0;border-bottom:1px solid #EEE9E3}
+  .rp-steps li > b{font-family:'Georgia Pro',Georgia,serif;font-weight:400;font-size:17px;color:var(--orange);line-height:1.2}
+  .rp-metas{list-style:none;margin:6px 0 18px;padding:0}
+  .rp-metas li{position:relative;padding:5px 0 5px 26px}
+  .rp-metas li::before{content:'—';position:absolute;left:0;color:var(--orange)}
+  .rp-sign{margin-top:26px}
+  .rp-sign b{display:block;font-family:'Georgia Pro',Georgia,serif;font-weight:400;font-size:20px}
+  .rp-sign span{font-size:10px;color:#6B6E80}
+  @media (max-width:640px){
+    .card{padding:18px}
+    .days-pick{grid-template-columns:repeat(4,1fr)}
+    .mat{grid-template-columns:1fr}
+    .day{grid-template-columns:1fr;gap:8px}
+    .bar-row{grid-template-columns:1fr 60px}
+    .bar-row .bar{grid-column:1 / -1;grid-row:2}
+    #simBars .bar-row{grid-template-columns:1fr 86px}
+    .stepper button{width:34px;height:34px}
+    .stepper input{width:54px}
+  }
+</style>
+</head>
+<body>
+<div id="jsErro" style="display:none;background:#B23A1E;color:#fff;padding:10px 16px;font:14px/1.4 sans-serif"></div>
+<script>window.addEventListener('error', function(ev){ var d = document.getElementById('jsErro'); if(d){ d.style.display = 'block'; d.textContent = 'A página encontrou um erro. Mande um print desta mensagem para a Sa: ' + ev.message + ' (linha ' + ev.lineno + ')'; } });</script>
+
+<header class="top">
+  <div class="wrap">
+    <span id="logoTop"></span>
+    <div class="brand"><b>Master5 OAB</b><span id="brandSub">Cronograma · 49º Exame</span></div>
+  </div>
+</header>
+<div class="tabs-bar"><nav class="tabs wrap" aria-label="Seções">
+  <button type="button" data-tab="crono" class="on">Cronograma</button>
+  <button type="button" data-tab="sim">Análise de simulado</button>
+</nav></div>
+
+<div class="wrap" id="iframeNotice" style="display:none;margin-top:16px"><div class="notice">Você está usando a plataforma dentro da área de alunos. Se o botão de baixar o PDF não funcionar, <a href="https://questoes.oabdescomplicada.com.br/cronograma-master5-oab-49/" target="_blank" rel="noopener" style="color:var(--navy);font-weight:600">abra a plataforma em uma nova aba</a>.</div></div>
+<main class="wrap tab" id="tab-crono">
+  <div class="notice" id="cronoNotice" style="display:none;margin-top:20px"></div>
+  <section class="hero">
+    <h1>Seu cronograma para o 49º Exame da OAB, montado para a <em>sua</em> rotina.</h1>
+    <p>Informe a data da prova, o tempo que você tem e como está em cada matéria. O cronograma distribui o estudo pelo peso de cada disciplina na prova, reforça o que você tem mais dificuldade e já encaixa as revisões no tempo certo.</p>
+  </section>
+
+  <form id="form" autocomplete="off">
+    <div class="card">
+      <div class="step"><i>1</i><h2>Seus dados</h2></div>
+      <div class="grid">
+        <div><label for="nome">Seu nome</label><input id="nome" placeholder="Como quer que apareça no PDF"></div>
+        <div><label for="concurso">Fase</label><select id="concurso" disabled></select></div>
+        <div><label for="cargo">Prova</label><select id="cargo" disabled></select></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="step"><i>2</i><h2>Datas<small>Use a data da prova do seu exame. Se ainda não saiu o edital, use uma data estimada e gere de novo quando sair.</small></h2></div>
+      <div class="grid">
+        <div><label for="inicio">Começo a estudar em</label><input type="date" id="inicio"></div>
+        <div><label for="prova">Data da prova</label><input type="date" id="prova"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="step"><i>3</i><h2>Seu tempo disponível<small>Horas líquidas de estudo em cada dia. Segunda é o dia de revisão e domingo é o dia de simulado ou de correção (o simulado da OAB dura 5h). Seja realista: um plano possível vale mais que um plano perfeito.</small></h2></div>
+      <div class="days-pick" id="daysPick"></div>
+      <div class="weekly" id="weekly"></div>
+    </div>
+
+    <div class="card">
+      <div class="step"><i>4</i><h2>Como você está em cada matéria<small>Matérias em que você tem dificuldade ganham mais tempo. As que você domina continuam no plano, com menos horas.</small></h2></div>
+      <div class="mat-list" id="matList"></div>
+    </div>
+
+    <div class="actions">
+      <button type="button" class="btn-main" id="btnGerar">Gerar meu cronograma</button>
+      <span class="err" id="err"></span>
+    </div>
+  </form>
+
+  <section id="resultado">
+    <div class="res-head">
+      <div>
+        <h2>Seu cronograma</h2>
+        <p id="resSub"></p>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button type="button" class="btn-ghost" id="btnEditar">Ajustar dados</button>
+        <button type="button" class="btn-orange" id="btnPdf">Baixar PDF</button>
+      </div>
+    </div>
+
+    <div class="stats" id="stats"></div>
+
+    <div class="card">
+      <div class="step"><i>·</i><h2>Como seu tempo foi distribuído</h2></div>
+      <div class="bars" id="bars"></div>
+    </div>
+
+    <div class="card">
+      <div class="step"><i>·</i><h2>Como funciona a sua semana</h2></div>
+      <div class="metodo">
+        <div>
+          <h3>Dias de estudo</h3>
+          <ol>
+            <li>Leitura da legislação esquematizada do tópico do dia</li>
+            <li>Resolução de questões comentadas</li>
+            <li>Caderno de erros, só com as questões que você errou</li>
+          </ol>
+        </div>
+        <div>
+          <h3>Segunda · Revisão</h3>
+          <ul>
+            <li>Revise 3 assuntos que você estudou na semana anterior</li>
+            <li>Use o caderno de erros, os flashcards e a evocação (lembrar sem olhar)</li>
+            <li><b>A cada 3 semanas de estudo</b>, uma semana inteira só de revisão</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Domingo · Simulado e correção</h3>
+          <ul>
+            <li>Um domingo você faz o simulado completo, no tempo de prova</li>
+            <li>No domingo seguinte, faz a correção aprofundada dele</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="weeks"></div>
+  </section>
+</main>
+
+<main class="wrap tab" id="tab-sim" hidden>
+  <section class="hero">
+    <h1>Transforme o seu simulado em um <em>plano de revisão</em>.</h1>
+    <p>Depois de fazer o simulado, informe quantas questões você acertou em cada matéria. A análise mostra a sua nota, onde você está perdendo mais pontos, o que revisar primeiro e como você está evoluindo de um simulado para o outro.</p>
+  </section>
+
+  <form id="simForm" autocomplete="off" novalidate>
+    <div class="card">
+      <div class="step"><i>1</i><h2>Dados do simulado</h2></div>
+      <div class="grid">
+        <div><label for="simAluno">Seu nome</label><input id="simAluno" placeholder="Como quer que apareça na análise"></div>
+        <div><label for="simNome">Nome do simulado</label><input id="simNome" placeholder="Ex.: Simulado 01"></div>
+        <div><label for="simData">Data em que você fez</label><input type="date" id="simData"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="step"><i>2</i><h2>Acertos por matéria<small>Coloque quantas questões você acertou em cada matéria. O máximo de cada uma é o número de questões que ela tem na prova.</small></h2></div>
+      <div id="simList"></div>
+      <div class="total-line"><span>Total de acertos</span><b id="simTotal">0 / 80</b></div>
+    </div>
+
+    <div class="actions">
+      <button type="button" class="btn-main" id="btnAnalise">Gerar minha análise</button>
+      <span class="err" id="simErr"></span>
+    </div>
+  </form>
+
+  <section id="simRes">
+    <div class="res-head">
+      <div><h2 id="simTitulo">Sua análise</h2><p id="simSub"></p></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button type="button" class="btn-ghost" id="btnLevar">Levar revisão para o cronograma</button>
+        <button type="button" class="btn-orange" id="btnSimPdf">Baixar PDF</button>
+      </div>
+    </div>
+    <div id="rpWrap"><div id="rpScale"></div></div>
+
+    <div class="card" style="margin-top:20px">
+      <div class="step"><i>·</i><h2>Sua evolução</h2></div>
+      <div id="simChart"></div>
+      <div id="simHist"></div>
+    </div>
+  </section>
+</main>
+
+<footer>Master5 OAB · Plataforma do aluno · versão 13/11 · 49º Exame</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+/* =====================================================================
+   CONFIGURAÇÃO DOS CONCURSOS — edite aqui
+   Cada matéria: ['Nome da matéria', peso]
+   Peso = número de questões da disciplina na prova (total de 80).
+   Para incluir um concurso novo, copie um bloco e mude os nomes.
+   ===================================================================== */
+const CONCURSOS = {
+  F1: {
+    nome: '1ª fase · Prova objetiva',
+    cargos: {
+      objetiva: { nome: 'Exame de Ordem (FGV) · 80 questões', unidade: 'questões',
+        simulado: ['Simulado completo de 80 questões, em 5h', 'Só a prova, no tempo real. A correção fica para o próximo domingo.'],
+        reta: 'questões + revisão da lei',
+        materias: [   // na ordem da prova
+        ['Ética Profissional',8],['Direito Constitucional',6],['Direitos Humanos',2],
+        ['Direito Tributário',5],['Direito Administrativo',5],['Direito Civil',6],
+        ['ECA',2],['Direito do Consumidor',2],['Direito Empresarial',4],
+        ['Direito Processual Civil',6],['Direito Penal',6],['Direito Processual Penal',6],
+        ['Direito Previdenciário',2],['Direito do Trabalho',5],['Direito Processual do Trabalho',5]
+      ]}
+    }
+  }
+};
+
+/* =====================================================================
+   TÓPICOS MAIS COBRADOS — em ordem de prioridade (o mais cobrado primeiro)
+   O cronograma distribui os tópicos pelos dias de cada matéria, nesta ordem.
+   Edite à vontade: o nome da matéria precisa ser igual ao da lista acima.
+   ===================================================================== */
+const TOPICOS = {
+  'Ética Profissional': [
+    'Prerrogativas do advogado',
+    'Atividade da advocacia e mandato (atos privativos e procuração)',
+    'Honorários advocatícios',
+    'Infrações e sanções disciplinares',
+    'Inscrição, incompatibilidades e impedimentos',
+    'Sociedade de advogados e advogado empregado',
+    'Publicidade, sigilo e deveres (Código de Ética)',
+    'Processo disciplinar',
+    'Estrutura da OAB, órgãos e eleições'
+  ],
+  'Direito Civil': [
+    'Direitos reais: posse, propriedade e usucapião',
+    'Contratos: teoria geral e contratos em espécie',
+    'Família: casamento, regime de bens, união estável e alimentos',
+    'Sucessões: legítima, testamento e inventário',
+    'Responsabilidade civil',
+    'Obrigações',
+    'Parte geral: pessoas, capacidade e negócio jurídico',
+    'Prescrição e decadência'
+  ],
+  'Direito Processual Civil': [
+    'Recursos: apelação, agravo e embargos de declaração',
+    'Cumprimento de sentença e execução',
+    'Tutelas provisórias',
+    'Procedimento comum: petição inicial, contestação e revelia',
+    'Competência',
+    'Partes, litisconsórcio e intervenção de terceiros',
+    'Sentença, coisa julgada e precedentes',
+    'Procedimentos especiais'
+  ],
+  'Direito Constitucional': [
+    'Direitos e garantias fundamentais',
+    'Controle de constitucionalidade',
+    'Remédios constitucionais',
+    'Poder Legislativo e processo legislativo',
+    'Organização do Estado e repartição de competências',
+    'Poderes Executivo e Judiciário',
+    'Nacionalidade e direitos políticos',
+    'Poder constituinte e emendas'
+  ],
+  'Direito Penal': [
+    'Teoria do crime: fato típico, ilicitude e culpabilidade',
+    'Crimes contra o patrimônio',
+    'Crimes contra a pessoa',
+    'Aplicação da pena: dosimetria e regimes',
+    'Concurso de pessoas e concurso de crimes',
+    'Extinção da punibilidade e prescrição',
+    'Tentativa, consumação, desistência e erro',
+    'Crimes contra a Administração Pública',
+    'Lei penal no tempo e no espaço'
+  ],
+  'Direito Processual Penal': [
+    'Recursos',
+    'Provas',
+    'Prisões e medidas cautelares',
+    'Inquérito policial e ação penal',
+    'Procedimentos: comum e Tribunal do Júri',
+    'Competência',
+    'Nulidades',
+    'Habeas corpus e revisão criminal'
+  ],
+  'Direito Administrativo': [
+    'Licitações e contratos (Lei 14.133/21)',
+    'Agentes públicos e servidores',
+    'Processo administrativo (Lei 9.784/99)',
+    'Intervenção do Estado na propriedade',
+    'Improbidade administrativa',
+    'Responsabilidade civil do Estado',
+    'Atos administrativos',
+    'Organização administrativa',
+    'Serviços públicos e concessões',
+    'Bens públicos'
+  ],
+  'Direito do Trabalho': [
+    'Jornada e tempo de trabalho: horas extras, intervalos e compensação',
+    'Remuneração e salário',
+    'Contrato de trabalho: requisitos, espécies e alteração',
+    'Extinção do contrato e verbas rescisórias',
+    'Férias',
+    'Estabilidades e garantias de emprego',
+    'Terceirização',
+    'Direito coletivo: sindicatos, negociação e greve',
+    'Proteção do trabalho da mulher e do menor'
+  ],
+  'Direito Processual do Trabalho': [
+    'Recursos trabalhistas, custas e depósito recursal',
+    'Execução trabalhista',
+    'Audiência e procedimentos ordinário e sumaríssimo',
+    'Petição inicial e resposta do réu',
+    'Competência da Justiça do Trabalho',
+    'Provas',
+    'Partes, procuradores e justiça gratuita',
+    'Ações especiais: mandado de segurança, rescisória e inquérito'
+  ],
+  'Direito Tributário': [
+    'Limitações ao poder de tributar: princípios e imunidades',
+    'Tributos em espécie: impostos federais, estaduais e municipais',
+    'Crédito tributário: suspensão, extinção e exclusão',
+    'Competência tributária',
+    'Obrigação tributária e responsabilidade',
+    'Espécies tributárias: taxas, contribuições e empréstimo compulsório',
+    'Lançamento, decadência e prescrição',
+    'Garantias e privilégios do crédito tributário'
+  ],
+  'Direito Empresarial': [
+    'Sociedades empresárias: classificação, limitada e anônima',
+    'Falência e recuperação judicial',
+    'Títulos de crédito',
+    'Empresário, EIRELI/SLU e estabelecimento',
+    'Contratos empresariais',
+    'Propriedade industrial'
+  ],
+  'Direitos Humanos': [
+    'Sistema interamericano: Convenção Americana, Comissão e Corte IDH',
+    'Tratados de direitos humanos: incorporação e hierarquia',
+    'Sistema global de proteção (ONU)',
+    'Estrangeiros, refugiados e Lei de Migração',
+    'Controle de convencionalidade',
+    'Grupos vulneráveis: mulher, pessoa com deficiência e povos indígenas'
+  ],
+  'ECA': [
+    'Convivência familiar: guarda, tutela e adoção',
+    'Ato infracional e medidas socioeducativas',
+    'Conselho Tutelar e medidas de proteção',
+    'Direitos fundamentais da criança e do adolescente',
+    'Justiça da Infância e da Juventude e crimes do ECA'
+  ],
+  'Direito do Consumidor': [
+    'Responsabilidade pelo fato e pelo vício do produto e do serviço',
+    'Práticas e cláusulas abusivas',
+    'Direitos básicos e inversão do ônus da prova',
+    'Oferta, publicidade e direito de arrependimento',
+    'Defesa do consumidor em juízo, prescrição e decadência'
+  ],
+  'Direito Previdenciário': [
+    'Benefícios em espécie: aposentadorias, auxílios e pensão',
+    'Beneficiários: segurados e dependentes',
+    'Carência e qualidade de segurado',
+    'Regime Geral e custeio',
+    'Seguridade social: saúde, assistência e BPC'
+  ]
+};
+
+/* Grupos que aparecem no seletor de concurso */
+const GRUPOS = { tribunal: 'Exame de Ordem' };
+
+/* Regras do método (ajuste se quiser) */
+/* Data da prova que já vem preenchida (próximo exame). Atualize a cada exame: 'AAAA-MM-DD' */
+const DATA_PROVA_PADRAO = '2027-05-09';  // 49º Exame de Ordem (1ª fase, data prevista)
+
+const REGRAS = {
+  fatorNivel: { fraca: 1.5, media: 1, forte: 0.6 },  // quanto cada nível pesa no tempo
+  revisaoNormal: 0.3,       // 30% do dia para revisão
+  revisaoRetaFinal: 0.5,    // 50% do dia para revisão na reta final
+  simuladoACadaSemanas: 4,  // 1 simulado a cada 4 semanas (toda semana na reta final)
+  revisoes: [[1,'24h'],[7,'7 dias'],[30,'30 dias']]
+};
+/* ===================================================================== */
+
+const NIVEIS = [['fraca','Tenho dificuldade'],['media','Mais ou menos'],['forte','Domino bem'],['fora','Não vou estudar']];
+const NIVEL_TXT = {fraca:'Dificuldade', media:'Médio', forte:'Domina'};
+const DIAS = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+const DIAS_LONGOS = ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'];
+const ORDEM = [1,2,3,4,5,6,0];
+const HORAS_PADRAO = {0:5,1:2,2:2,3:2,4:2,5:2,6:3};
+const STORE_KEY = 'm5oab49-cronograma-v1';
+
+const LOGO_SVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">'
+ + '<path d="M35.6 16.5 A42 42 0 1 0 64.4 16.5" fill="none" stroke="#D7683D" stroke-width="5" stroke-linecap="round"/>'
+ + '<ellipse cx="43" cy="12" rx="8" ry="3.6" transform="rotate(-28 43 12)" fill="#D7683D"/>'
+ + '<ellipse cx="57" cy="12" rx="8" ry="3.6" transform="rotate(28 57 12)" fill="#D7683D"/>'
+ + '<circle cx="50" cy="56" r="31" fill="#D7683D"/>'
+ + '<g transform="rotate(45 50 56)" fill="#15172B"><rect x="45" y="36" width="10" height="40" rx="2"/><rect x="30" y="51" width="40" height="10" rx="2"/></g>'
+ + '<circle cx="50" cy="56" r="3.5" fill="#D7683D"/>'
+ + '<g stroke="#F3F1EF" stroke-width="2.5" stroke-linecap="round"><line x1="50" y1="40" x2="50" y2="45"/><line x1="50" y1="67" x2="50" y2="72"/><line x1="34" y1="56" x2="39" y2="56"/><line x1="61" y1="56" x2="66" y2="56"/></g>'
+ + '</svg>';
+
+/* ---------- utilidades ---------- */
+const $ = s => document.querySelector(s);
+const pad = n => String(n).padStart(2,'0');
+const toISO = d => d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+const parseISO = s => { const [y,m,d] = s.split('-').map(Number); return new Date(y,m-1,d); };
+const addDays = (d,n) => { const x = new Date(d); x.setDate(x.getDate()+n); return x; };
+const ddmm = d => pad(d.getDate())+'/'+pad(d.getMonth()+1);
+const ddmmyyyy = d => ddmm(d)+'/'+d.getFullYear();
+const roundHalf = x => Math.round(x*2)/2;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function fmtH(h){
+  const H = Math.floor(h+1e-9), M = Math.round((h-H)*60);
+  if(!H) return M+'min';
+  return M ? H+'h'+pad(M) : H+'h';
+}
+function diffDays(a,b){ return Math.round((b - a)/86400000); }
+
+/* ---------- motor do cronograma ----------
+   Semana de segunda a domingo:
+   - Segunda: revisão de 3 assuntos estudados na semana anterior
+   - Terça a sábado: estudo de 2 ou 3 matérias (legislação > questões > caderno de erros)
+   - Domingo: simulado e correção aprofundada, intercalados
+   - A cada 3 semanas de estudo, 1 semana inteira só de revisão
+   ------------------------------------------------- */
+const CICLO_ESTUDO = 3;   // semanas de estudo antes de cada semana de revisão
+const REV_SEGUNDA = 3;    // quantos assuntos revisar na segunda
+const PASSOS = [['Legislação esquematizada',0.35],['Questões comentadas',0.45],['Caderno de erros (só as erradas)',0.20]];
+function splitDay(H){
+  const tot = Math.round(H*60), r10 = x => Math.max(10, Math.round(x/10)*10);
+  const leg = r10(tot*PASSOS[0][1]), err = r10(tot*PASSOS[2][1]);
+  return [[PASSOS[0][0], leg/60], [PASSOS[1][0], Math.max(10, tot-leg-err)/60], [PASSOS[2][0], err/60]];
+}
+function generatePlan(cfg){
+  const F = REGRAS.fatorNivel;
+  const subs = cfg.materias.filter(m => m.nivel !== 'fora')
+    .map(m => ({nome:m.nome, nivel:m.nivel, peso:m.peso, w:m.peso*F[m.nivel], h:0, dias:0}));
+  const W = subs.reduce((a,s) => a+s.w, 0);
+  const totalDays = diffDays(cfg.start, cfg.end);
+  const hrs = d => cfg.hours[d.getDay()] || 0;
+
+  const wks = []; let cur = null;
+  for(let i=0;i<totalDays;i++){
+    const date = addDays(cfg.start, i);
+    if(!cur || date.getDay() === 1){ cur = []; wks.push(cur); }
+    cur.push(date);
+  }
+
+  let assigned = 0, simulados = 0, totalH = 0, revH = 0, simH = 0, domingos = 0, lastSim = null;
+  let prevMats = [], seguidas = 0;
+  const weeks = wks.map((dates, wi) => {
+    const avail = dates.filter(d => hrs(d) > 0);
+    const semanaRev = seguidas >= CICLO_ESTUDO && dates.length >= 4;
+    const revDate = !semanaRev && prevMats.length ? (avail.find(d => d.getDay() === 1) || avail[0] || null) : null;
+    const rest = avail.filter(d => d !== revDate);
+    let wkDate = rest.find(d => d.getDay() === 0) || null;
+    if(!wkDate && dates.length === 7 && rest.length >= 3) wkDate = rest[rest.length-1];
+    const studyDates = semanaRev ? [] : rest.filter(d => d !== wkDate);
+
+    // escolhe 2 ou 3 matérias da semana (as mais "atrasadas" em relação ao peso)
+    const weekH = studyDates.reduce((a,d) => a+hrs(d), 0);
+    const k = Math.min(studyDates.length, studyDates.length >= 5 ? 3 : 2);
+    const chosen = [...subs].sort((a,b) => (b.w/W*(assigned+weekH) - b.h) - (a.w/W*(assigned+weekH) - a.h)).slice(0,k);
+    const counts = new Map(chosen.map(s => [s,0])), tmpH = new Map(chosen.map(s => [s,s.h]));
+    let tmpA = assigned;
+    studyDates.forEach((d,i) => {
+      let pick = chosen[i];
+      if(i >= chosen.length){ let best = -Infinity; chosen.forEach(s => { const def = s.w/W*(tmpA+hrs(d)) - tmpH.get(s); if(def > best){ best = def; pick = s; } }); }
+      counts.set(pick, counts.get(pick)+1); tmpH.set(pick, tmpH.get(pick)+hrs(d)); tmpA += hrs(d);
+    });
+    const seq = []; chosen.forEach(s => { for(let j=0;j<counts.get(s);j++) seq.push(s); });
+    const plan = new Map(studyDates.map((d,i) => [d, seq[i]]));
+
+    const days = []; let wh = 0; const estudadas = [];
+    dates.forEach(date => {
+      const H = hrs(date);
+      if(!H){ days.push({date, H:0, tipo:'folga'}); return; }
+      wh += H; totalH += H;
+      if(date === revDate){ revH += H; days.push({date, H, tipo:'revisao', mats:prevMats}); return; }
+      if(date === wkDate){
+        simH += H;
+        if(domingos % 2 === 0){ simulados++; lastSim = date; days.push({date, H, tipo:'simulado'}); }
+        else days.push({date, H, tipo:'correcao', ref:lastSim});
+        domingos++; return;
+      }
+      if(semanaRev){ revH += H; days.push({date, H, tipo:'revsem'}); return; }
+      const s = plan.get(date);
+      s.h += H; s.dias++; assigned += H;
+      if(!estudadas.includes(s.nome)) estudadas.push(s.nome);
+      days.push({date, H, tipo:'estudo', nome:s.nome, n:s.dias, passos:splitDay(H)});
+    });
+    if(semanaRev) seguidas = 0;
+    else if(estudadas.length){ prevMats = estudadas; seguidas++; }
+    return {n:wi+1, start:dates[0], end:dates[dates.length-1], days, h:wh, mats:estudadas, revisao:semanaRev};
+  });
+  // distribui os tópicos (do mais cobrado para o menos) pelos dias de cada matéria
+  const porMateria = {};
+  weeks.forEach(w => w.days.forEach(d => { if(d.tipo === 'estudo') (porMateria[d.nome] = porMateria[d.nome] || []).push(d); }));
+  Object.entries(porMateria).forEach(([nome, dias]) => {
+    const T = TOPICOS[nome] || [], n = dias.length;
+    dias.forEach((d,i) => {
+      d.total = n;
+      if(!T.length){ d.topicos = []; return; }
+      if(n >= T.length){ d.topicos = [T[i % T.length]]; d.reforco = i >= T.length; }
+      else { const C = Math.min(T.length, n*2); d.topicos = T.slice(Math.floor(i*C/n), Math.floor((i+1)*C/n)); }  // no máximo 2 tópicos por dia; com pouco tempo, ficam os mais cobrados
+    });
+  });
+  // matérias do último simulado que entram em toda revisão de segunda
+  const extra = (typeof loadExtra === 'function') ? loadExtra() : null;
+  const NIV = {fraca:0, media:1, forte:2};
+  const info = Object.fromEntries(subs.map(s => [s.nome, s]));
+  let ultimaEstudo = null, desdeRev = [];
+  weeks.forEach(w => {
+    // segunda: 3 assuntos da última semana de estudo (primeiro os de dificuldade e de maior peso)
+    w.days.forEach(d => {
+      if(d.tipo !== 'revisao' || !ultimaEstudo) return;
+      if(extra && extra.itens && extra.itens.length) d.extra = extra;
+      const cand = [];
+      ultimaEstudo.days.filter(x => x.tipo === 'estudo').forEach(x => x.topicos.forEach(t => { if(!cand.some(c => c.t === t)) cand.push({nome:x.nome, t}); }));
+      cand.sort((a,b) => (NIV[info[a.nome].nivel] - NIV[info[b.nome].nivel]) || (info[b.nome].peso - info[a.nome].peso));
+      const esc3 = [];
+      cand.forEach(c => { if(esc3.length < REV_SEGUNDA && !esc3.some(e => e.nome === c.nome)) esc3.push(c); });
+      cand.forEach(c => { if(esc3.length < REV_SEGUNDA && !esc3.includes(c)) esc3.push(c); });
+      const g = new Map(); esc3.forEach(c => { if(!g.has(c.nome)) g.set(c.nome, []); g.get(c.nome).push(c.t); });
+      d.itens = [...g].map(([nome, tops]) => ({nome, tops}));
+    });
+    // semana de revisão: tudo o que foi estudado desde a última semana de revisão
+    if(w.revisao){
+      const g = new Map();
+      desdeRev.forEach(x => { if(!g.has(x.nome)) g.set(x.nome, []); x.topicos.forEach(t => { if(!g.get(x.nome).includes(t)) g.get(x.nome).push(t); }); });
+      const mats = [...g].map(([nome, tops]) => ({nome, tops}));
+      const dias = w.days.filter(d => d.tipo === 'revsem');
+      dias.forEach((d,i) => { d.itens = mats.slice(Math.floor(i*mats.length/dias.length), Math.floor((i+1)*mats.length/dias.length)); });
+      w.mats = mats.map(m => m.nome);
+      desdeRev = [];
+    } else {
+      const est = w.days.filter(d => d.tipo === 'estudo');
+      if(est.length){ ultimaEstudo = w; desdeRev.push(...est); }
+    }
+  });
+  return {weeks, subs, assigned, simulados, nWeeks:weeks.length, totalH, revH, simH};
+}
+
+/* ---------- formulário ---------- */
+let PLAN = null, LAST = null;
+
+function loadSaved(){ try { return JSON.parse(localStorage.getItem(STORE_KEY)) || null; } catch(e){ return null; } }
+function save(data){ try { localStorage.setItem(STORE_KEY, JSON.stringify(data)); } catch(e){} }
+const saved = loadSaved();
+
+function fillConcursos(){
+  const sel = $('#concurso');
+  sel.innerHTML = Object.entries(GRUPOS).map(([gk,gn]) => {
+    const itens = Object.entries(CONCURSOS).filter(([,c]) => (c.grupo || 'tribunal') === gk);
+    if(!itens.length) return '';
+    return `<optgroup label="${esc(gn)}">` + itens.map(([k,c]) => `<option value="${k}">${esc(c.nome)}</option>`).join('') + '</optgroup>';
+  }).join('');
+  if(saved && CONCURSOS[saved.concurso]) sel.value = saved.concurso;
+  fillCargos(saved && saved.cargo);
+}
+function fillCargos(pref){
+  const c = CONCURSOS[$('#concurso').value];
+  const sel = $('#cargo');
+  sel.innerHTML = Object.entries(c.cargos).map(([k,g]) => `<option value="${k}">${esc(g.nome)}</option>`).join('');
+  if(pref && c.cargos[pref]) sel.value = pref;
+  fillMaterias();
+}
+function fillMaterias(){
+  const g = CONCURSOS[$('#concurso').value].cargos[$('#cargo').value];
+  const prev = {};
+  document.querySelectorAll('#matList select').forEach(s => prev[s.dataset.nome] = s.value);
+  const savedN = (saved && saved.niveis) || {};
+  $('#matList').innerHTML = g.materias.map(([nome,peso]) => {
+    const v = prev[nome] || savedN[nome] || 'media';
+    const un = g.unidade; const pw = un ? `${peso} ${un} na prova` : (peso >= 3 ? 'Peso alto na prova' : peso === 2 ? 'Peso médio na prova' : 'Peso menor na prova');
+    return `<div class="mat"><div><div class="nm">${esc(nome)}</div><div class="pw">${pw}</div></div>
+      <select data-nome="${esc(nome)}" data-peso="${peso}" aria-label="Nível em ${esc(nome)}">
+        ${NIVEIS.map(([k,t]) => `<option value="${k}"${k===v?' selected':''}>${t}</option>`).join('')}
+      </select></div>`;
+  }).join('');
+}
+function fillDays(){
+  const opts = [];
+  for(let h=0; h<=10; h+=0.5) opts.push(h);
+  $('#daysPick').innerHTML = ORDEM.map(d => {
+    const v = saved && saved.hours ? saved.hours[d] : HORAS_PADRAO[d];
+    return `<div><label for="h${d}">${DIAS[d]}</label><select id="h${d}" data-dia="${d}">
+      ${opts.map(h => `<option value="${h}"${h===v?' selected':''}>${h ? fmtH(h) : 'folga'}</option>`).join('')}
+    </select></div>`;
+  }).join('');
+  updateWeekly();
+}
+function readHours(){ const h = {}; document.querySelectorAll('#daysPick select').forEach(s => h[s.dataset.dia] = Number(s.value)); return h; }
+function updateWeekly(){
+  const h = readHours(); const t = Object.values(h).reduce((a,b) => a+b, 0);
+  $('#weekly').innerHTML = t ? `Total por semana: <b>${fmtH(t)}</b>` : 'Escolha pelo menos um dia com horas de estudo.';
+}
+
+function init(){
+  $('#logoTop').innerHTML = LOGO_SVG;
+  fillConcursos();
+  fillDays();
+  const hoje = new Date(); hoje.setHours(0,0,0,0);
+  $('#inicio').value = (saved && saved.inicio) || toISO(hoje);
+  const padrao = parseISO(DATA_PROVA_PADRAO);
+  $('#prova').value = (saved && saved.prova && parseISO(saved.prova) > hoje) ? saved.prova : (padrao > addDays(hoje, 7) ? DATA_PROVA_PADRAO : toISO(addDays(hoje, 7*16)));
+  $('#nome').value = (saved && saved.nome) || '';
+  $('#concurso').addEventListener('change', () => fillCargos());
+  $('#cargo').addEventListener('change', fillMaterias);
+  $('#daysPick').addEventListener('change', updateWeekly);
+  $('#form').addEventListener('submit', onGenerate);
+  $('#btnGerar').addEventListener('click', onGenerate);
+  $('#btnEditar').addEventListener('click', () => $('#form').scrollIntoView({behavior:'smooth'}));
+  $('#btnPdf').addEventListener('click', baixarPDF);
+}
+
+function onGenerate(ev){
+  if(ev) ev.preventDefault();
+  const err = $('#err'); err.textContent = '';
+  const inicio = $('#inicio').value, prova = $('#prova').value;
+  if(!inicio || !prova){ err.textContent = 'Preencha as duas datas.'; return; }
+  const start = parseISO(inicio), end = parseISO(prova);
+  const dd = diffDays(start, end);
+  if(dd < 7){ err.textContent = 'A prova precisa estar pelo menos 7 dias depois do início.'; return; }
+  if(dd > 730){ err.textContent = 'O cronograma vai até 2 anos. Ajuste a data da prova.'; return; }
+  const hours = readHours();
+  if(!Object.values(hours).some(h => h > 0)){ err.textContent = 'Escolha pelo menos um dia com horas de estudo.'; return; }
+  const materias = [...document.querySelectorAll('#matList select')].map(s => ({nome:s.dataset.nome, peso:Number(s.dataset.peso), nivel:s.value}));
+  if(!materias.some(m => m.nivel !== 'fora')){ err.textContent = 'Deixe pelo menos uma matéria no plano.'; return; }
+
+  const c = CONCURSOS[$('#concurso').value], g = c.cargos[$('#cargo').value];
+  LAST = { nome: $('#nome').value.trim(), concurso: c.nome, cargo: g.nome, sim: g.simulado, reta: g.reta, start, end, hours, materias };
+  save({ nome:LAST.nome, concurso:$('#concurso').value, cargo:$('#cargo').value, inicio, prova, hours,
+         niveis:Object.fromEntries(materias.map(m => [m.nome, m.nivel])) });
+  PLAN = generatePlan(LAST);
+  render();
+}
+
+/* ---------- visualização ---------- */
+function render(){
+  const P = PLAN, L = LAST;
+  $('#resSub').textContent = `${L.nome ? L.nome+' · ' : ''}${L.concurso} · ${L.cargo} · prova em ${ddmmyyyy(L.end)}`;
+  const semanal = Object.values(L.hours).reduce((a,b) => a+b, 0);
+  $('#stats').innerHTML = [
+    [P.nWeeks, P.nWeeks === 1 ? 'semana até a prova' : 'semanas até a prova'],
+    [fmtH(P.totalH), 'de estudo no total'],
+    [fmtH(semanal), 'por semana'],
+    [P.simulados, P.simulados === 1 ? 'simulado programado' : 'simulados programados']
+  ].map(([b,s]) => `<div class="stat"><b>${b}</b><span>${s}</span></div>`).join('');
+
+  const max = Math.max(...P.subs.map(s => s.h), 1);
+  $('#bars').innerHTML = [...P.subs].sort((a,b) => b.h - a.h).map(s =>
+    `<div class="bar-row ${s.nivel}"><span>${esc(s.nome)}</span><div class="bar"><i style="width:${(s.h/max*100).toFixed(1)}%"></i></div><span class="hh">${fmtH(s.h)}</span></div>`
+  ).join('') + `<div class="hint" style="margin-top:4px">Em laranja, as matérias que você marcou como dificuldade. Além dessas horas, ${fmtH(P.revH)} ficam para as revisões de segunda e ${fmtH(P.simH)} para simulados e correções.</div>`;
+
+  $('#weeks').innerHTML = P.weeks.map((w,i) => `
+    <details class="week"${i < 2 ? ' open' : ''}>
+      <summary><b>Semana ${w.n}</b><span class="dt">${ddmm(w.start)} a ${ddmm(w.end)}</span>${w.revisao ? '<span class="tag">Semana de revisão</span>' : ''}<span class="hw">${fmtH(w.h)}</span>${w.mats.length ? `<span class="wk-mats">${w.revisao ? 'Revisão de' : 'Matérias da semana'}: <b>${w.mats.map(esc).join(' · ')}</b></span>` : ''}</summary>
+      ${w.days.map(dayHTML).join('')}
+    </details>`).join('');
+
+  if(typeof mostrarAvisoCrono === 'function') mostrarAvisoCrono();
+  const r = $('#resultado'); r.style.display = 'block';
+  r.scrollIntoView({behavior:'smooth'});
+}
+function revsemHTML(d, head){
+  const it = (d.itens || []);
+  return `<div class="day revisao">${head}<div><h4>Semana de revisão</h4>${it.length ? it.map(m => `<div class="rev-m"><div class="mt">${esc(m.nome)}</div><ul class="tops">${m.tops.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>`).join('') : '<div class="mt">Caderno de erros e flashcards de tudo o que você estudou</div>'}</div>
+    <div><h4>Como fazer</h4>Releia o caderno de erros e os flashcards desses temas, faça 10 questões de cada um e, no fim, escreva sem olhar tudo o que você lembra (evocação). Depois confira.</div></div>`;
+}
+function dayHTML(d){
+  const head = `<div class="dn"><b>${DIAS_LONGOS[d.date.getDay()]}</b><span>${ddmm(d.date)}${d.H ? ' · '+fmtH(d.H) : ''}</span></div>`;
+  if(d.tipo === 'folga') return `<div class="day folga">${head}<div>Descanso</div><div></div></div>`;
+  if(d.tipo === 'revsem') return revsemHTML(d, head);
+  if(d.tipo === 'simulado') return `<div class="day simulado">${head}<div><h4>Simulado</h4><div class="mt">${esc(LAST.sim[0])}</div></div><div><h4>Como fazer</h4>${esc(LAST.sim[1])}</div></div>`;
+  if(d.tipo === 'correcao') return `<div class="day correcao">${head}<div><h4>Correção aprofundada</h4><div class="mt">Simulado de ${ddmm(d.ref)}</div></div><div><h4>Como fazer</h4>Refaça cada questão errada, classifique o erro (conteúdo, interpretação ou pressa) e anote no caderno de erros.</div></div>`;
+  if(d.tipo === 'revisao') return `<div class="day revisao">${head}<div><h4>Revisão: 3 assuntos da semana anterior</h4>${(d.itens || d.mats.map(m => ({nome:m, tops:[]}))).map(it => `<div class="rev-m"><div class="mt">${esc(it.nome)}</div>${it.tops.length ? `<ul class="tops">${it.tops.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}</div>`).join('')}${d.extra ? `<div class="rev-m"><div class="mt">Revisão semanal do ${esc(d.extra.sim)}</div><ul class="tops">${d.extra.itens.map(x => `<li>${esc(x.nome)} · ${x.min} min</li>`).join('')}</ul></div>` : ''}</div><div><h4>Como fazer</h4>Caderno de erros, flashcards e evocação: tente lembrar sem olhar e depois confira.</div></div>`;
+  return `<div class="day">${head}<div><h4>Estudo</h4><div class="mt">${esc(d.nome)}${d.reforco ? '<span class="tag-ref">Reforço</span>' : ''}</div>${d.topicos.length ? `<ul class="tops">${d.topicos.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}<div class="note">Dia ${d.n} de ${d.total} nesta matéria</div></div>
+    <div><h4>Passo a passo</h4><ol class="passos">${d.passos.map(([t,h]) => `<li>${esc(t)} <em>· ${fmtH(h)}</em></li>`).join('')}</ol></div></div>`;
+}
+
+/* ---------- PDF ---------- */
+function logoPNG(){
+  return new Promise(res => {
+    const img = new Image();
+    img.onload = () => {
+      try {
+        const c = document.createElement('canvas'); c.width = c.height = 300;
+        c.getContext('2d').drawImage(img, 0, 0, 300, 300);
+        res(c.toDataURL('image/png'));
+      } catch(e){ res(null); }
+    };
+    img.onerror = () => res(null);
+    img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(LOGO_SVG);
+  });
+}
+function slug(s){ return (s || 'aluno').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') || 'aluno'; }
+
+async function baixarPDF(){
+  if(!PLAN) return;
+  if(!window.jspdf || !window.jspdf.jsPDF){ alert('Não consegui carregar o gerador de PDF. Confira sua internet e tente de novo.'); return; }
+  const btn = $('#btnPdf'); const txt = btn.textContent; btn.textContent = 'Gerando PDF...'; btn.disabled = true;
+  try {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({unit:'mm', format:'a4'});
+    const P = PLAN, L = LAST, PW = 210, M = 14;
+    const NAVY = [21,23,43], ORANGE = [215,104,61], BLUE = [136,150,190], SAND = [232,160,98], PAPER = [243,241,239], MUTED = [94,97,118];
+
+    doc.setFillColor(...NAVY); doc.rect(0,0,PW,36,'F');
+    const logo = await logoPNG();
+    if(logo) doc.addImage(logo,'PNG',M,7,22,22);
+    const tx = logo ? M+28 : M;
+    doc.setTextColor(...SAND); doc.setFont('helvetica','bold'); doc.setFontSize(8.5);
+    doc.text('MASTER5 OAB', tx, 14, {charSpace:0.8});
+    doc.setTextColor(255,255,255); doc.setFont('times','bold'); doc.setFontSize(20);
+    doc.text('Cronograma · 49º Exame', tx, 23);
+    if(L.nome){ doc.setFont('helvetica','normal'); doc.setFontSize(10); doc.text(L.nome, tx, 30); }
+
+    let y = 46;
+    const semanal = Object.values(L.hours).reduce((a,b) => a+b, 0);
+    doc.setTextColor(...NAVY); doc.setFont('helvetica','bold'); doc.setFontSize(10.5);
+    doc.text(`${L.concurso}  ·  ${L.cargo}`, M, y);
+    doc.setFont('helvetica','normal'); doc.setFontSize(9.5); doc.setTextColor(...MUTED);
+    y += 6; doc.text(`Período: ${ddmmyyyy(L.start)} a ${ddmmyyyy(addDays(L.end,-1))}  ·  Prova: ${ddmmyyyy(L.end)}`, M, y);
+    y += 5; doc.text(`${P.nWeeks} semanas  ·  ${fmtH(semanal)} por semana  ·  ${fmtH(P.totalH)} no total  ·  ${P.simulados} simulados`, M, y);
+    y += 5; doc.text('Rotina: ' + ORDEM.filter(d => L.hours[d]).map(d => `${DIAS[d]} ${fmtH(L.hours[d])}`).join('  ·  '), M, y);
+
+    y += 9;
+    doc.setTextColor(...NAVY); doc.setFont('times','bold'); doc.setFontSize(13);
+    doc.text('Distribuição do tempo', M, y);
+    doc.autoTable({
+      startY: y+3, margin:{left:M,right:M},
+      head: [['Matéria','Seu nível','Horas de estudo','% do estudo']],
+      body: [...P.subs].sort((a,b) => b.h - a.h).map(s => [s.nome, NIVEL_TXT[s.nivel], fmtH(s.h), (P.assigned ? s.h/P.assigned*100 : 0).toFixed(0)+'%']),
+      styles:{font:'helvetica', fontSize:9, cellPadding:2.2, textColor:NAVY, lineColor:[221,216,210], lineWidth:0.2},
+      headStyles:{fillColor:NAVY, textColor:255, fontStyle:'bold'},
+      alternateRowStyles:{fillColor:[250,249,247]},
+      columnStyles:{2:{halign:'right'},3:{halign:'right'}},
+      didParseCell: h => { if(h.section === 'body' && h.column.index === 1 && h.cell.raw === 'Dificuldade') h.cell.styles.textColor = ORANGE; }
+    });
+
+    y = doc.lastAutoTable.finalY + 8;
+    const boxH = 38;
+    if(y + boxH > 280){ doc.addPage(); y = 20; }
+    doc.setFillColor(...PAPER); doc.setDrawColor(...SAND); doc.roundedRect(M, y, PW-2*M, boxH, 2, 2, 'FD');
+    doc.setTextColor(...NAVY); doc.setFont('times','bold'); doc.setFontSize(12);
+    doc.text('Como funciona a sua semana', M+5, y+7);
+    doc.setFont('helvetica','normal'); doc.setFontSize(8.2);
+    const colW = (PW-2*M-10)/3;
+    const cols = [
+      ['Dias de estudo', ['1. Legislação esquematizada','2. Questões comentadas','3. Caderno de erros (só as erradas)']],
+      ['Segunda · Revisão', ['3 assuntos da semana anterior','Caderno de erros e flashcards','A cada 3 semanas: semana de revisão']],
+      ['Domingo · Simulado e correção', ['Um domingo: simulado completo','No seguinte: correção aprofundada','Classifique cada erro']]
+    ];
+    cols.forEach(([t,items],i) => {
+      const x = M+5+i*colW;
+      doc.setFont('helvetica','bold'); doc.setTextColor(...ORANGE); doc.text(t, x, y+14);
+      doc.setFont('helvetica','normal'); doc.setTextColor(...NAVY);
+      items.forEach((it,j) => doc.text(it, x, y+20+j*4.6));
+    });
+    y += boxH + 10;
+
+    P.weeks.forEach(w => {
+      const est = 18 + w.days.filter(d => d.tipo !== 'folga').length*15 + w.days.filter(d => d.tipo === 'folga').length*7;
+      if(y + Math.min(est, 200) > 280){ doc.addPage(); y = 20; }
+      doc.setTextColor(...NAVY); doc.setFont('times','bold'); doc.setFontSize(12.5);
+      doc.text(`Semana ${w.n}`, M, y);
+      doc.setFont('helvetica','normal'); doc.setFontSize(9); doc.setTextColor(...MUTED);
+      doc.text(`${ddmm(w.start)} a ${ddmm(w.end)}  ·  ${fmtH(w.h)}`, M+24, y);
+      let ty = y;
+      if(w.revisao){ doc.setTextColor(...ORANGE); doc.setFont('helvetica','bold'); doc.text('SEMANA DE REVISÃO', PW-M, y, {align:'right'}); doc.setFont('helvetica','normal'); doc.setTextColor(...MUTED); }
+      if(w.mats.length){ ty += 5; doc.setFontSize(8.6); const ln = doc.splitTextToSize((w.revisao ? 'Revisão de: ' : 'Matérias da semana: ') + w.mats.join('  ·  '), PW-2*M); doc.text(ln, M, ty); ty += (ln.length-1)*4; }
+
+      const body = w.days.map(d => {
+        const dia = `${DIAS_LONGOS[d.date.getDay()]}\n${ddmm(d.date)}${d.H ? ' · '+fmtH(d.H) : ''}`;
+        if(d.tipo === 'folga') return [dia, 'Descanso', ''];
+        if(d.tipo === 'simulado') return [dia, L.sim[0], L.sim[1]];
+        if(d.tipo === 'correcao') return [dia, `Correção aprofundada do simulado de ${ddmm(d.ref)}`, 'Refaça cada questão errada, classifique o erro (conteúdo, interpretação ou pressa) e anote no caderno de erros.'];
+        if(d.tipo === 'revsem') return [dia, 'Semana de revisão:\n' + (d.itens || []).map(m => m.nome + '\n' + m.tops.map(t => '- ' + t).join('\n')).join('\n'), 'Releia o caderno de erros e os flashcards desses temas, faça 10 questões de cada um e, no fim, escreva sem olhar o que lembra (evocação).'];
+        if(d.tipo === 'revisao') return [dia, 'Revisão: 3 assuntos da semana anterior:\n' + (d.itens || d.mats.map(m => ({nome:m, tops:[]}))).map(it => it.nome + (it.tops.length ? '\n' + it.tops.map(t => '- ' + t).join('\n') : '')).join('\n') + (d.extra ? `\nRevisão semanal do ${d.extra.sim}:\n` + d.extra.itens.map(x => `- ${x.nome} (${x.min} min): ${x.como}`).join('\n') : ''), 'Caderno de erros, flashcards e evocação: tente lembrar sem olhar e depois confira.'];
+        return [dia, `${d.nome}${d.reforco ? ' (reforço)' : ''}\n` + d.topicos.map(t => '- ' + t).join('\n') + `\nDia ${d.n} de ${d.total}`, d.passos.map(([t,h],i) => `${i+1}. ${t} (${fmtH(h)})`).join('\n')];
+      });
+      doc.autoTable({
+        startY: ty+3, margin:{left:M,right:M, top:16},
+        head: [['Dia','Atividade','Como fazer']],
+        body,
+        rowPageBreak:'avoid',
+        styles:{font:'helvetica', fontSize:8.6, cellPadding:2.2, textColor:NAVY, lineColor:[221,216,210], lineWidth:0.2, valign:'top'},
+        headStyles:{fillColor:BLUE, textColor:255, fontStyle:'bold'},
+        columnStyles:{0:{cellWidth:28, fontStyle:'bold'}, 1:{cellWidth:86}, 2:{cellWidth:'auto'}},
+        didParseCell: h => {
+          if(h.section !== 'body') return;
+          const d = w.days[h.row.index];
+          if(d.tipo === 'folga'){ h.cell.styles.textColor = MUTED; h.cell.styles.fillColor = [250,249,247]; }
+          if(d.tipo === 'simulado' || d.tipo === 'correcao'){ h.cell.styles.fillColor = [251,238,231]; }
+          if(d.tipo === 'revisao' || d.tipo === 'revsem'){ h.cell.styles.fillColor = [236,239,247]; }
+          
+        }
+      });
+      y = doc.lastAutoTable.finalY + 10;
+    });
+
+    const pages = doc.getNumberOfPages();
+    for(let i=1;i<=pages;i++){
+      doc.setPage(i);
+      doc.setDrawColor(...SAND); doc.setLineWidth(0.3); doc.line(M, 287, PW-M, 287);
+      doc.setFont('helvetica','normal'); doc.setFontSize(8); doc.setTextColor(...MUTED);
+      doc.text('Master5 OAB' + (L.nome ? '  ·  Cronograma de ' + L.nome : ''), M, 291.5);
+      doc.text(`${i} / ${pages}`, PW-M, 291.5, {align:'right'});
+    }
+    doc.save(`cronograma-oab49-${slug(L.nome)}.pdf`);
+  } catch(e){
+    console.error(e); alert('Algo deu errado ao gerar o PDF. Tente de novo.');
+  } finally {
+    btn.textContent = txt; btn.disabled = false;
+  }
+}
+
+/* =====================================================================
+   ANÁLISE DE SIMULADO
+   Distribuição das 80 questões da 1ª fase (edite se a FGV mudar).
+   ===================================================================== */
+const PROVA_COMPLETA = [   // na ordem em que as disciplinas aparecem na prova
+  ['Ética Profissional',8],['Filosofia do Direito',2],['Direito Constitucional',6],['Direitos Humanos',2],
+  ['Direito Eleitoral',2],['Direito Internacional',2],['Direito Financeiro',2],['Direito Tributário',5],
+  ['Direito Administrativo',5],['Direito Ambiental',2],['Direito Civil',6],['ECA',2],
+  ['Direito do Consumidor',2],['Direito Empresarial',4],['Direito Processual Civil',6],['Direito Penal',6],
+  ['Direito Processual Penal',6],['Direito Previdenciário',2],['Direito do Trabalho',5],['Direito Processual do Trabalho',5]
+];
+/* Temas mais cobrados das matérias que não estão no cronograma (usados só na análise) */
+const TEMAS_EXTRA = {
+  'Direitos Humanos': ['Sistema interamericano e tratados de direitos humanos', 'Direitos dos estrangeiros e refugiados'],
+  'Direito do Consumidor': ['Vícios do produto e do serviço', 'Cláusulas e práticas abusivas'],
+  'ECA': ['Convivência familiar, guarda e adoção', 'Medidas socioeducativas e acolhimento'],
+  'Direito Ambiental': ['Licenciamento ambiental', 'Responsabilidade ambiental e unidades de conservação'],
+  'Direito Internacional': ['Competência internacional e LINDB', 'Homologação de sentença estrangeira'],
+  'Filosofia do Direito': ['Kelsen e o positivismo jurídico', 'Teorias da justiça'],
+  'Direito Eleitoral': ['Financiamento e prestação de contas de campanha', 'Inelegibilidades'],
+  'Direito Financeiro': ['Leis orçamentárias: PPA, LDO e LOA', 'Lei de Responsabilidade Fiscal']
+};
+/* Nomes curtos (gráfico e tabelas) e nomes para o texto */
+const CURTO = {'Ética Profissional':'Ética','Direito Civil':'Direito Civil','Direito Processual Civil':'Processo Civil','Direito Constitucional':'D. Constitucional','Direito Penal':'Direito Penal','Direito Processual Penal':'Processo Penal','Direito Administrativo':'D. Administrativo','Direito do Trabalho':'D. Trabalho','Direito Processual do Trabalho':'Processo do Trabalho','Direito Tributário':'D. Tributário','Direito Empresarial':'D. Empresarial','Direito Previdenciário':'D. Previdenciário','Direitos Humanos':'D. Humanos','Direito do Consumidor':'CDC','ECA':'ECA','Direito Ambiental':'D. Ambiental','Direito Internacional':'D. Internacional','Filosofia do Direito':'Filosofia','Direito Eleitoral':'D. Eleitoral','Direito Financeiro':'D. Financeiro'};
+const PROSA = {'Ética Profissional':'Ética','Direito Civil':'Direito Civil','Direito Processual Civil':'Processo Civil','Direito Constitucional':'Constitucional','Direito Penal':'Direito Penal','Direito Processual Penal':'Processo Penal','Direito Administrativo':'Administrativo','Direito do Trabalho':'Direito do Trabalho','Direito Processual do Trabalho':'Processo do Trabalho','Direito Tributário':'Tributário','Direito Empresarial':'Empresarial','Direito Previdenciário':'Previdenciário','Direitos Humanos':'Direitos Humanos','Direito do Consumidor':'Consumidor','ECA':'ECA','Direito Ambiental':'Ambiental','Direito Internacional':'Internacional','Filosofia do Direito':'Filosofia','Direito Eleitoral':'Eleitoral','Direito Financeiro':'Financeiro'};
+const NOTA_CORTE = 40;              // acertos para passar na 1ª fase
+const LINHA = 0.5;                  // abaixo disso a matéria entra na revisão semanal
+const SIM_KEY = 'm5oab49-simulados-v1';
+const EXTRA_KEY = 'm5oab49-revisao-simulado-v1';
+const TOTAL_Q = PROVA_COMPLETA.reduce((a,m) => a+m[1], 0);
+const NO_CRONO = () => new Set(CONCURSOS.F1.cargos.objetiva.materias.map(m => m[0]));
+
+function loadSims(){ try { return JSON.parse(localStorage.getItem(SIM_KEY)) || []; } catch(e){ return []; } }
+function saveSims(a){ try { localStorage.setItem(SIM_KEY, JSON.stringify(a)); } catch(e){} }
+function loadExtra(){ try { return JSON.parse(localStorage.getItem(EXTRA_KEY)) || null; } catch(e){ return null; } }
+function saveExtra(x){ try { x ? localStorage.setItem(EXTRA_KEY, JSON.stringify(x)) : localStorage.removeItem(EXTRA_KEY); } catch(e){} }
+let SIMS = loadSims(), SIM = null;
+
+/* ---------- utilidades de texto ---------- */
+const QF = ['zero','uma','duas','três','quatro','cinco','seis','sete','oito','nove','dez'];
+const QM = ['zero','um','dois','três','quatro','cinco','seis','sete','oito','nove','dez'];
+const ORD = ['primeiro','segundo','terceiro','quarto','quinto','sexto','sétimo','oitavo','nono','décimo'];
+const extF = n => QF[n] || String(n), extM = n => QM[n] || String(n);
+const lista = a => a.length <= 1 ? (a[0] || '') : a.slice(0,-1).join(', ') + ' e ' + a[a.length-1];
+const pctBR = p => (Math.round(p*1000)/10).toString().replace('.', ',') + '%';
+const fmtMin = m => m < 60 ? m + ' min' : Math.floor(m/60) + 'h' + (m%60 ? pad(m%60) : '');
+const temas = nome => (TOPICOS[nome] || TEMAS_EXTRA[nome] || []).slice(0,2);
+const totalDe = h => PROVA_COMPLETA.reduce((a,[n]) => a + (h.acertos[n]||0), 0);
+function proxDomingo(d){ const x = new Date(d); const k = (7 - x.getDay()) % 7 || 7; x.setDate(x.getDate()+k); return x; }
+function primeiroNome(s){ return (s || '').trim().split(/\s+/)[0] || ''; }
+
+function showTab(t){
+  document.querySelectorAll('.tabs button').forEach(b => b.classList.toggle('on', b.dataset.tab === t));
+  $('#tab-crono').hidden = t !== 'crono';
+  $('#tab-sim').hidden = t !== 'sim';
+  $('#brandSub').textContent = t === 'sim' ? 'Análise de simulado' : 'Cronograma · 49º Exame';
+  try { history.replaceState(null, '', t === 'sim' ? '#simulado' : location.pathname + location.search); } catch(e){}
+  window.scrollTo(0,0);
+  if(t === 'sim') fitReport();
+}
+
+/* ---------- formulário ---------- */
+function proxNomeSim(){ return 'Simulado ' + pad(SIMS.length + 1); }
+function buildSimForm(){
+  const crono = NO_CRONO();
+  const row = ([nome,n], q) => `<div class="sim-row"><div><div class="nm">${esc(nome)}</div><div class="pw">Questões ${q} a ${q+n-1} · ${n} na prova</div></div>
+    <div class="stepper"><button type="button" data-d="-1" aria-label="Menos">−</button>
+    <input type="number" min="0" max="${n}" inputmode="numeric" data-nome="${esc(nome)}" data-max="${n}" placeholder="0" aria-label="Acertos em ${esc(nome)}">
+    <button type="button" data-d="1" aria-label="Mais">+</button><small>/ ${n}</small></div></div>`;
+  let q = 1;
+  $('#simList').innerHTML = PROVA_COMPLETA.map(m => { const h = row(m, q); q += m[1]; return h; }).join('');
+  $('#simList').addEventListener('click', ev => {
+    const btn = ev.target.closest('button[data-d]'); if(!btn) return;
+    const inp = btn.parentElement.querySelector('input');
+    inp.value = Math.min(+inp.dataset.max, Math.max(0, (parseInt(inp.value,10) || 0) + (+btn.dataset.d)));
+    updateSimTotal();
+  });
+  $('#simList').addEventListener('input', updateSimTotal);
+  ['#eConteudo','#eInterp','#ePressa'].forEach(id => { const e = $(id); if(e) e.addEventListener('input', updateSimTotal); });
+  $('#simData').value = toISO(new Date());
+  $('#simNome').value = proxNomeSim();
+  const ultimo = SIMS.length ? SIMS[SIMS.length-1] : null;
+  $('#simAluno').value = (ultimo && ultimo.aluno) || (saved && saved.nome) || '';
+  updateSimTotal();
+}
+function readAcertos(){
+  const o = {}; let erro = '', campo = null;
+  document.querySelectorAll('#simList input').forEach(i => {
+    const raw = String(i.value).trim();
+    let v = raw === '' ? 0 : Number(raw.replace(',', '.'));
+    const ruim = isNaN(v) || v < 0 || v > +i.dataset.max || !Number.isInteger(v);
+    i.classList.toggle('bad', ruim);
+    if(ruim && !erro){ erro = `${i.dataset.nome} tem só ${i.dataset.max} questões na prova. Coloque um número de 0 a ${i.dataset.max}.`; campo = i; }
+    o[i.dataset.nome] = ruim ? 0 : v;
+  });
+  return {o, erro, campo};
+}
+const numDe = id => { const e = $(id); return e ? (parseInt(e.value,10) || 0) : 0; };
+function updateSimTotal(){
+  const {o, erro} = readAcertos(); const t = Object.values(o).reduce((a,b) => a+b, 0);
+  $('#simTotal').textContent = `${t} / ${TOTAL_Q}`;
+  $('#simErr').textContent = erro;
+  const erros = TOTAL_Q - t;
+  const e = ['#eConteudo','#eInterp','#ePressa'].reduce((a,id) => a + numDe(id), 0);
+  if($('#errHint')) $('#errHint').innerHTML = e ? (e === erros ? `Tudo certo: ${e} erros classificados.` : `<span class="warn">Você classificou ${e} erros, mas errou ${erros} questões. Confira os números.</span>`) : `Você errou ${erros} questões neste simulado.`;
+}
+
+/* ---------- cálculo ---------- */
+function analisar(sim){
+  const mats = PROVA_COMPLETA.map(([nome,n]) => { const a = sim.acertos[nome] || 0; return {nome, n, a, e:n-a, p:a/n}; });
+  const total = mats.reduce((x,m) => x+m.a, 0);
+  const hist = [...SIMS].sort((x,y) => (x.data+x.id).localeCompare(y.data+y.id));
+  const idx = hist.findIndex(x => x.id === sim.id);
+  const ant = idx > 0 ? hist[idx-1] : null;
+  const abaixo = mats.filter(m => m.p < LINHA).sort((x,y) => (y.e - x.e) || (y.n - x.n) || (x.p - y.p));
+  const acima = mats.filter(m => m.p >= LINHA).sort((x,y) => (y.p - x.p) || (y.n - x.n));
+  return {mats, total, erros: TOTAL_Q - total, ant, hist, ordem: idx + 1, abaixo, acima};
+}
+function comoRevisar(m){
+  if(m.n >= 5) return ['10 questões FGV + caderno de erros só com as que errar', 30];
+  if(m.n >= 3) return ['Leitura do esquema dos temas mais cobrados + 6 questões', 20];
+  return ['Flashcards dos temas recorrentes + 4 questões', 15];
+}
+
+/* ---------- textos do relatório (voz da Sa) ---------- */
+function relatorio(S, A){
+  const nome = primeiroNome(S.aluno), N = A.ordem, gap = NOTA_CORTE - A.total;
+  const T = {};
+  T.kicker = `Análise de desempenho · ${S.nome} · ${ddmmyyyy(parseISO(S.data))}`;
+  T.titulo = nome ? `${esc(nome)}, vamos olhar<br>o seu ${ORD[N-1] || N + 'º'} simulado` : `Vamos olhar<br>o seu ${ORD[N-1] || N + 'º'} simulado`;
+  T.box3 = gap > 0 ? [gap === 1 ? '1 questão' : `${gap} questões`, gap === 1 ? 'separa você dos 40 pontos' : 'separam você dos 40 pontos']
+                   : [`+${-gap}`, -gap === 1 ? 'questão acima da linha dos 40' : 'questões acima da linha dos 40'];
+  // abertura
+  let p1, p2;
+  const situacao = gap <= 0 ? `com ${A.total} acertos, você já está acima da linha de aprovação.`
+    : gap <= 5 ? `com ${A.total} acertos, você está a apenas <span class="hl">${extF(gap)} ${gap === 1 ? 'questão' : 'questões'}</span> da aprovação.`
+    : `com ${A.total} acertos, faltam <span class="hl">${gap} questões</span> para a aprovação, e é exatamente para isso que a gente tem um plano.`;
+  if(N === 1){
+    p1 = `Antes de qualquer número, quero que você entenda o papel deste simulado. O primeiro simulado funciona como aquele ponto azul do GPS que diz <b>“você está aqui”</b>. Ele não diz se você vai chegar, só mostra de onde estamos saindo. ${gap <= 5 ? 'E, sinceramente, saímos de um lugar muito bom: ' : 'E olha: '}${situacao} ` +
+      (A.total > 29 ? 'Para comparar, na minha primeira prova da OAB eu fiz 29.' : 'Na minha primeira prova da OAB eu fiz 29, e fui aprovada depois. Número de largada não é número de chegada.');
+    p2 = `Por ser o primeiro, <b>não vamos fazer grandes mudanças no seu cronograma</b>. Muitas matérias têm só 2 questões, então um único erro já derruba o aproveitamento para 50%. Precisamos de mais dois ou três simulados para enxergar um padrão de verdade. O que vamos fazer agora é um ajuste fino: manter o que já funciona e colocar as matérias de menor pontuação na revisão semanal.`;
+  } else {
+    const t0 = totalDe(A.ant), d = A.total - t0;
+    const comp = d > 0 ? `Você saiu de ${t0} para <b>${A.total} acertos</b>: ${d} a mais que no ${esc(A.ant.nome)}. Isso é o método funcionando.`
+      : d === 0 ? `Você repetiu os ${A.total} acertos do ${esc(A.ant.nome)}. Estabilidade também é informação: agora é mexer nos pontos certos para destravar.`
+      : `Você fez ${A.total} acertos, ${-d} a menos que no ${esc(A.ant.nome)}. Oscilar faz parte, principalmente quando a prova muda de nível. O que importa é o que a correção vai te mostrar.`;
+    const subiram = A.mats.filter(m => m.a > (A.ant.acertos[m.nome]||0)).map(m => PROSA[m.nome]);
+    p1 = `Este é o seu ${ORD[N-1] || N + 'º'} simulado, e agora já dá para comparar. ${comp} Hoje, ${situacao}`;
+    p2 = (subiram.length ? `Melhoraram em relação ao último: <b>${lista(subiram.slice(0,6))}</b>. ` : '') +
+      `Com ${N} simulados, já começamos a enxergar padrões. As matérias abaixo de 50% continuam na revisão semanal, e só saem dela quando aparecem acima de 50% em dois simulados seguidos.`;
+  }
+  T.p1 = p1; T.p2 = p2;
+
+  // o que já está funcionando
+  const eti = A.mats.find(m => m.nome === 'Ética Profissional');
+  const bons = A.acima.filter(m => m.n >= 4 && m.p > LINHA);
+  let f1;
+  if(!A.acima.length) f1 = 'Ainda não tem matéria acima da linha de corte, e tudo bem: é para isso que o simulado existe. A partir de agora, cada correção vai construir essa lista.';
+  else {
+    const best = A.acima[0];
+    const partes = [`<b>${PROSA[best.nome]} (${best.a}/${best.n})</b> foi o seu melhor resultado`];
+    if(eti && eti !== best && eti.p >= LINHA) partes.push(`e <b>Ética (${eti.a}/${eti.n})</b> já veio acima da média, o que é ótimo, porque Ética é a matéria que mais pesa na prova`);
+    f1 = partes.join(', ') + '.';
+    const resto = bons.filter(m => m !== best && m !== eti);
+    if(resto.length){
+      const mesmo = resto.every(m => m.a === resto[0].a && m.n === resto[0].n);
+      const nomes = lista(resto.slice(0,5).map(m => PROSA[m.nome]));
+      f1 += ` <b>${nomes}${mesmo ? ` (${resto[0].a}/${resto[0].n}${resto.length > 1 ? ' cada' : ''})` : ''}</b> também ${resto.length > 1 ? 'ficaram' : 'ficou'} acima da linha de corte.`;
+    }
+    f1 += ' Nessas matérias, a ordem é simples: <b>continue fazendo exatamente o que está fazendo.</b>';
+  }
+  T.f1 = f1;
+  T.f2 = !eti ? '' : eti.a === eti.n ? 'Ética veio gabaritada. Mantenha com flashcards e caderno de erros: ela é a sua base de pontos.'
+    : `Uma meta para Ética: chegar a ${eti.a + 1 >= eti.n ? eti.n : `${eti.a + 1} ou ${Math.min(eti.n, eti.a + 2)}`} acertos. Com 8 questões, cada acerto a mais em Ética vale como uma matéria pequena inteira. É o atalho mais curto ${gap > 0 ? 'para os 40' : 'para aumentar a sua margem'}.`;
+
+  // onde estão os pontos
+  const L = A.abaixo.slice(0,6);
+  if(L.length){
+    const g = L.filter(m => m.n >= 4).slice(0,2);
+    T.o1 = g.length === 2
+      ? `Repare que não são as matérias pequenas que mais tiraram pontos de você. ${PROSA[g[0].nome]} e ${PROSA[g[1].nome]}, juntas, levaram <span class="hl">${g[0].e + g[1].e} dos seus ${A.erros} erros</span>. É ali que mora a maior oportunidade.`
+      : `As matérias abaixo da linha de corte somaram <span class="hl">${A.abaixo.reduce((a,m) => a+m.e, 0)} dos seus ${A.erros} erros</span>. É ali que mora a maior oportunidade.`;
+    let curta = 0;
+    T.linhas = L.map((m,i) => {
+      let t;
+      if(i === 0 && m.n >= 5){ const par = L[1] && L[1].e === m.e && L[1].n >= 5 ? ` junto com ${CURTO[L[1].nome]}` : ''; t = `Maior perda${par}. Prioridade da revisão.`; }
+      else if(m.n >= 5){ const meio = Math.ceil(m.n/2) - m.a; t = gap > 0 && meio >= gap ? `Matéria de peso. Recuperar ${gap === 1 ? '1 questão' : gap + ' questões'} aqui já te aprova.` : `Matéria de peso. Chegar a ${Math.ceil(m.n/2)} acertos já muda o seu resultado.`; }
+      else if(m.n >= 3) t = 'Foco nos temas que a FGV mais repete.';
+      else { t = curta++ === 0 ? 'Poucos temas, alta repetição. Revisão rápida resolve.' : 'Mesmo caso: matéria curta, dá para virar o jogo.'; }
+      return [CURTO[m.nome], `${m.a}/${m.n}`, m.e, t];
+    });
+  } else T.o1 = 'Nenhuma matéria ficou abaixo de 50%. Agora os seus pontos estão em levar as matérias de 50% para 75%, principalmente as que têm mais questões.';
+
+  // plano de revisão
+  T.plano = L.map(m => { const [como, min] = comoRevisar(m); return {nome: m.nome, curto: CURTO[m.nome], como, min, temas: temas(m.nome)}; });
+  const tot = T.plano.reduce((a,x) => a + x.min, 0);
+  T.pl1 = `Seu cronograma continua o mesmo: nos dias de estudo, leitura da legislação esquematizada, questões comentadas e caderno de erros. A única mudança é na <b>segunda-feira</b>, que já é o seu dia de revisão: além das matérias da semana anterior, ${T.plano.length === 1 ? 'entra esta matéria' : `entram estas ${extF(T.plano.length)}`}.`;
+  T.pl2 = !T.plano.length ? '' : `São cerca de ${fmtMin(tot)} a mais na segunda.` +
+    (T.plano.length > 2 && tot > 60 ? ` Se o dia apertar, divida: ${lista(T.plano.slice(0,2).map(x => PROSA[x.nome]))} na segunda, ${T.plano.length - 2 === 1 ? 'a outra' : `as outras ${extF(T.plano.length - 2)}`} na terça.` : '') +
+    ' O importante é que elas não fiquem sem contato durante a semana. Essas matérias só saem da revisão semanal quando aparecerem acima de 50% em dois simulados seguidos.';
+
+  // correção aprofundada
+  const dom = proxDomingo(parseISO(S.data));
+  T.c1 = `Fazer o simulado é tirar a radiografia. A correção aprofundada é quando o médico lê o exame. Sem ela, o simulado vira só uma nota. É na correção que estão os pontos que vão te aprovar, por isso ela é <b>obrigatória</b> e vai acontecer no próximo domingo, <b>${ddmm(dom)}</b>, seguindo a nossa alternância: um domingo simulado, o seguinte correção.`;
+  T.passos = [
+    'Refaça a questão sem olhar o gabarito, como se fosse a primeira vez.',
+    'Leia o comentário e vá até o artigo de lei. Não basta saber a letra certa, tem que saber o porquê.',
+    'Classifique o erro: <b>conteúdo</b> (eu não sabia), <b>interpretação</b> (eu sabia, mas li errado o enunciado) ou <b>pressa</b> (eu sabia e marquei errado por desatenção).',
+    'Leve para o caderno de erros só o ponto que te fez errar, em uma frase curta, e transforme em flashcard se for conteúdo.',
+    'Revise também as questões que você acertou no chute. Acerto no chute é erro que deu sorte.'
+  ];
+  T.errosMat = A.mats.filter(m => m.e > 0).map(m => [CURTO[m.nome], m.e]);
+  const E = S.erros || {conteudo:0, interpretacao:0, pressa:0}, eTot = E.conteudo + E.interpretacao + E.pressa;
+  if(eTot){
+    const tipos = [['conteúdo', E.conteudo], ['interpretação', E.interpretacao], ['pressa', E.pressa]].sort((a,b) => b[1]-a[1]);
+    const dica = {conteudo:'o caminho é voltar à legislação esquematizada dos temas mais cobrados e fazer questões comentadas logo em seguida.',
+      'interpretação':'grife o comando da questão e palavras como EXCETO, INCORRETA e SOMENTE antes de olhar as alternativas.',
+      pressa:'treine a gestão do tempo: são cerca de 3 minutos e meio por questão. Marque as duvidosas e volte nelas no final.'};
+    T.tipos = `Neste simulado você já classificou os seus erros: <b>${E.conteudo}</b> de conteúdo, <b>${E.interpretacao}</b> de interpretação e <b>${E.pressa}</b> por pressa. A maior parte é de <b>${tipos[0][0]}</b>, então ${dica[tipos[0][0] === 'conteúdo' ? 'conteudo' : tipos[0][0]]}`;
+  }
+
+  // metas
+  const prox = 'Simulado ' + pad(N + 1);
+  const alvo = Math.min(TOTAL_Q, Math.max(NOTA_CORTE + 2, A.total + 4));
+  T.metaTit = `Meta para o ${prox}`;
+  T.metas = [`<b>${alvo} acertos ou mais</b> no total, ${A.total >= NOTA_CORTE ? 'para aumentar a sua margem acima dos 40.' : 'para criar uma margem de segurança acima dos 40.'}`];
+  if(eti && eti.a < eti.n) T.metas.push(`<b>${eti.a + 1} acertos em Ética</b> é o caminho mais curto para somar pontos.`);
+  const g2 = L.filter(m => m.n >= 4).slice(0,2);
+  if(g2.length === 2) T.metas.push(`<b>${g2[0].a + 1} acertos em ${PROSA[g2[0].nome]} e ${g2[1].a + 1} em ${PROSA[g2[1].nome]}</b>: só isso já devolve 2 pontos.`);
+  else if(g2.length === 1) T.metas.push(`<b>${g2[0].a + 1} acertos em ${PROSA[g2[0].nome]}</b>: um ponto a mais na matéria que mais pesou.`);
+  T.metas.push('<b>Correção aprofundada feita em 100% dos erros</b> antes do próximo simulado, sem pular nenhuma.');
+  T.recado = `${nome ? esc(nome) + ', um' : 'Um'} último recado: errar ${A.erros} questões agora é a melhor coisa que poderia acontecer, porque são ${A.erros} lições que a FGV não vai poder cobrar de surpresa no dia da prova. Quem erra mais, aprende mais. Não deixe de vir aos encontros e de fazer a correção com calma.`;
+  T.fecho = gap <= 0 ? 'Você já está do lado de cá da linha. Agora é criar margem e chegar com tranquilidade no dia da prova.'
+    : gap === 1 ? 'Falta só um pontinho. Bora buscar ele?'
+    : gap === 2 ? 'Faltam só dois pontinhos. Bora buscar eles?'
+    : gap <= 9 ? `Faltam ${gap} pontos. Um de cada vez, a gente chega lá.`
+    : 'O caminho é maior, mas é claro. Um simulado de cada vez.';
+  return T;
+}
+
+/* ---------- montagem das páginas A4 ---------- */
+let LOGO_URL = null;
+function pagina(conteudo, n, S){
+  return `<div class="rp"><div class="rp-top"></div><img class="rp-logo" src="${LOGO_URL || ''}" alt="">
+    <div class="rp-body">${conteudo}</div>
+    <div class="rp-foot"><span>Master5 OAB · Análise do ${esc(S.nome)}${S.aluno ? ' · ' + esc(S.aluno) : ''}</span><span>${n}</span></div></div>`;
+}
+function montarRelatorio(S, A){
+  const T = relatorio(S, A);
+  const ord = [...A.mats].sort((x,y) => (y.p - x.p) || (y.n - x.n));
+  const grafico = `<div class="rp-chart">${ord.map(m => `<div class="rc-row"><span class="rc-l">${CURTO[m.nome]}</span>
+      <span class="rc-t" style="--w:${(m.p*100).toFixed(1)}%"><i class="${m.p < LINHA ? 'o' : ''}" style="width:${(m.p*100).toFixed(1)}%"></i><em>${m.a}/${m.n}</em></span></div>`).join('')}
+    <div class="rc-grid"><span style="left:0">0%</span><span style="left:25%">25%</span><span style="left:50%">50%</span><span style="left:75%">75%</span><span style="left:100%">100%</span></div>
+    <div class="rc-cut"><b>linha de corte (50%)</b></div></div>`;
+  const p1 = `<div class="rp-kicker">${esc(T.kicker)}</div><h1 class="rp-h1">${T.titulo}</h1>
+    <div class="rp-stats"><div><b>${A.total}/${TOTAL_Q}</b><span>acertos no simulado</span></div><div><b>${pctBR(A.total/TOTAL_Q)}</b><span>de aproveitamento geral</span></div>
+    <div class="dk"><b>${T.box3[0]}</b><span>${T.box3[1]}</span></div></div>
+    <p>${T.p1}</p><p>${T.p2}</p>
+    <h2 class="rp-h2">Seu resultado por matéria</h2>
+    <p class="rp-note">Barras em <span class="hl">laranja</span> são as matérias que entram na sua revisão semanal. A linha tracejada marca os 50%, que é o aproveitamento mínimo da aprovação.</p>${grafico}`;
+  const tabPontos = T.linhas ? `<table class="rp-tb"><thead><tr><th>Matéria</th><th>Acertos</th><th>Erros</th><th>Leitura</th></tr></thead><tbody>
+      ${T.linhas.map(r => `<tr><td><b>${r[0]}</b></td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join('')}</tbody></table>` : '';
+  const tabPlano = T.plano.length ? `<table class="rp-tb or"><thead><tr><th>Bloco</th><th>Matéria</th><th>Como revisar</th><th>Tempo</th></tr></thead><tbody>
+      ${T.plano.map((x,i) => `<tr><td>${i+1}</td><td><b>${x.curto}</b></td><td>${x.como}${x.temas.length ? `<small>Temas: ${x.temas.map(esc).join(' · ')}</small>` : ''}</td><td>${x.min} min</td></tr>`).join('')}</tbody></table>` : '';
+  const p2 = `<h2 class="rp-h2 first">O que já está funcionando</h2><p>${T.f1}</p>${T.f2 ? `<p>${T.f2}</p>` : ''}
+    <h2 class="rp-h2">Onde estão os pontos que faltam</h2><p>${T.o1}</p>${tabPontos}
+    ${T.plano.length ? `<h2 class="rp-h2">Plano de revisão</h2><p>${T.pl1}</p>${tabPlano}<p>${T.pl2}</p>` : ''}`;
+  const p3 = `<h2 class="rp-h2 first">A correção aprofundada (a parte mais importante)</h2><p>${T.c1}</p>
+    <p>Para cada uma das suas ${A.erros} questões erradas:</p>
+    <ol class="rp-steps">${T.passos.map((t,i) => `<li><b>${i+1}</b><span>${t}</span></li>`).join('')}</ol>
+    ${T.tipos ? `<p>${T.tipos}</p>` : ''}
+    <p>Preencha esta tabela durante a correção. Ela vai nos dizer, no próximo simulado, se o seu problema é estudar mais ou ler com mais calma.</p>
+    <table class="rp-tb rp-fill"><thead><tr><th>Matéria</th><th>Erros</th><th>Conteúdo</th><th>Interpretação</th><th>Pressa</th></tr></thead><tbody>
+      ${T.errosMat.map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td><td></td><td></td><td></td></tr>`).join('')}
+      <tr class="tt"><td>Total</td><td>${A.erros}</td><td></td><td></td><td></td></tr></tbody></table>`;
+  const p4 = `<h2 class="rp-h2 first">${esc(T.metaTit)}</h2><ul class="rp-metas">${T.metas.map(t => `<li>${t}</li>`).join('')}</ul>
+    <p>${T.recado}</p><p>${T.fecho}</p>
+    <div class="rp-sign"><b>Sa</b><span>Mentora Master5 OAB · @sabrinedireito</span></div>`;
+  return [p1,p2,p3,p4].map((c,i) => pagina(c, i+1, S)).join('');
+}
+function fitReport(){
+  const wrap = $('#rpWrap'), sc = $('#rpScale'); if(!wrap || !sc || !sc.firstChild) return;
+  const k = Math.min(1, wrap.clientWidth / 794);
+  sc.style.transform = `scale(${k})`;
+  wrap.style.height = (sc.scrollHeight * k) + 'px';
+}
+
+/* ---------- ações ---------- */
+function onSimSubmit(ev){
+  if(ev) ev.preventDefault();
+  try { gerarAnalise(); }
+  catch(e){ console.error(e); $('#simErr').textContent = 'Não consegui gerar a análise. Mande um print desta mensagem para a Sa: ' + (e && e.message ? e.message : e); }
+}
+function gerarAnalise(){
+  const {o, erro, campo} = readAcertos(); $('#simErr').textContent = '';
+  if(erro){ $('#simErr').textContent = erro; campo.scrollIntoView({behavior:'smooth', block:'center'}); campo.focus({preventScroll:true}); return; }
+  const total = Object.values(o).reduce((a,b) => a+b, 0);
+  if(!total){ $('#simErr').textContent = 'Preencha os acertos de pelo menos uma matéria.'; return; }
+  const nome = $('#simNome').value.trim() || proxNomeSim();
+  const data = $('#simData').value || toISO(new Date());
+  const aluno = $('#simAluno').value.trim();
+  const erros = {conteudo: numDe('#eConteudo'), interpretacao: numDe('#eInterp'), pressa: numDe('#ePressa')};
+  const existente = SIMS.find(x => x.nome.toLowerCase() === nome.toLowerCase());
+  const sim = {id: existente ? existente.id : String(Date.now()), nome, data, aluno, acertos:o, erros};
+  SIMS = SIMS.filter(x => x.id !== sim.id).concat(sim); saveSims(SIMS);
+  SIM = sim; renderSim();
+}
+
+function chartSVG(hist){
+  if(hist.length < 2) return `<p class="hint" style="font-size:14px">Registre os próximos simulados aqui para ver o gráfico da sua evolução.</p>`;
+  const W = 640, H = 230, L = 40, Rr = 56, T = 22, B = 36, xs = i => L + i*(W-L-Rr)/(hist.length-1), ys = v => T + (1 - v/TOTAL_Q)*(H-T-B);
+  const vals = hist.map(totalDe), pts = vals.map((v,i) => [xs(i), ys(v)]);
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Evolução das notas">
+    ${[0,20,40,60,80].map(v => `<line x1="${L}" x2="${W-Rr}" y1="${ys(v)}" y2="${ys(v)}" stroke="#E6E2DC"/><text x="${L-8}" y="${ys(v)+4}" font-size="11" text-anchor="end" fill="#5E6176">${v}</text>`).join('')}
+    <line x1="${L}" x2="${W-Rr}" y1="${ys(NOTA_CORTE)}" y2="${ys(NOTA_CORTE)}" stroke="#D7683D" stroke-dasharray="5 5" stroke-width="1.5"/>
+    <text x="${L+6}" y="${ys(NOTA_CORTE)+15}" font-size="11" fill="#D7683D">linha de aprovação: ${NOTA_CORTE}</text>
+    <polyline points="${pts.map(p => p.join(',')).join(' ')}" fill="none" stroke="#15172B" stroke-width="2.5"/>
+    ${pts.map((p,i) => `<circle cx="${p[0]}" cy="${p[1]}" r="5" fill="${vals[i] >= NOTA_CORTE ? '#15172B' : '#D7683D'}"/><text x="${p[0]}" y="${p[1]-10}" font-size="12" font-weight="600" text-anchor="middle" fill="#15172B">${vals[i]}</text>
+    <text x="${p[0]}" y="${H-12}" font-size="11" text-anchor="middle" fill="#5E6176">${esc(hist[i].nome.length > 12 ? hist[i].nome.slice(0,11)+'…' : hist[i].nome)}</text>`).join('')}
+  </svg>`;
+}
+
+function renderSim(){
+  const A = analisar(SIM), S = SIM;
+  $('#simTitulo').textContent = 'Análise do ' + S.nome;
+  $('#simSub').textContent = `${S.aluno ? S.aluno + ' · ' : ''}feito em ${ddmmyyyy(parseISO(S.data))} · ${A.total}/${TOTAL_Q} acertos`;
+  $('#rpScale').innerHTML = montarRelatorio(S, A);
+  $('#btnLevar').style.display = A.abaixo.length ? '' : 'none';
+  $('#simChart').innerHTML = chartSVG(A.hist);
+  $('#simHist').innerHTML = `<table class="hist"><thead><tr><th>Simulado</th><th>Data</th><th>Acertos</th><th></th></tr></thead><tbody>
+    ${[...A.hist].reverse().map(h => `<tr><td>${esc(h.nome)}${h.id === S.id ? ' <span class="tag-ref">aberto</span>' : ''}</td><td>${ddmm(parseISO(h.data))}</td><td><b>${totalDe(h)}</b>/${TOTAL_Q}</td>
+      <td style="text-align:right"><button type="button" class="x" data-ver="${h.id}">ver</button><button type="button" class="x" data-del="${h.id}">excluir</button></td></tr>`).join('')}
+  </tbody></table>`;
+  $('#simRes').style.display = 'block';
+  $('#simNome').value = proxNomeSim();
+  fitReport();
+  $('#simRes').scrollIntoView({behavior:'smooth'});
+}
+
+/* o plano de revisão do simulado vai para as segundas-feiras do cronograma */
+function levarParaCronograma(){
+  if(!SIM) return;
+  const A = analisar(SIM);
+  const itens = A.abaixo.slice(0,6).map(m => { const [como, min] = comoRevisar(m); return {nome: m.nome, como, min}; });
+  saveExtra({sim: SIM.nome, itens});
+  showTab('crono');
+  mostrarAvisoCrono();
+  if(PLAN && LAST){ PLAN = generatePlan(LAST); render(); }
+  else setTimeout(() => $('#cronoNotice').scrollIntoView({behavior:'smooth', block:'center'}), 100);
+}
+function mostrarAvisoCrono(){
+  const x = loadExtra(), nt = $('#cronoNotice');
+  if(!x || !x.itens.length){ nt.style.display = 'none'; return; }
+  nt.style.display = 'block';
+  nt.innerHTML = `<b>Revisão semanal do ${esc(x.sim)} ativa.</b> Toda segunda, além das matérias da semana anterior, entram: ${esc(lista(x.itens.map(i => PROSA[i.nome] || i.nome)))}. ${PLAN ? '' : 'Preencha os dados e clique em <b>Gerar meu cronograma</b>.'} <button type="button" class="x" id="rmExtra" style="background:none;border:0;padding:0 0 0 6px;text-decoration:underline;color:var(--muted);font-weight:500">remover</button>`;
+  $('#rmExtra').addEventListener('click', () => { saveExtra(null); mostrarAvisoCrono(); if(PLAN && LAST){ PLAN = generatePlan(LAST); render(); } });
+}
+
+async function baixarSimPDF(){
+  if(!SIM) return;
+  if(!window.jspdf || !window.jspdf.jsPDF || !window.html2canvas){ alert('Não consegui carregar o gerador de PDF. Confira sua internet e tente de novo.'); return; }
+  const btn = $('#btnSimPdf'); const txt = btn.textContent; btn.textContent = 'Gerando PDF...'; btn.disabled = true;
+  const host = document.createElement('div');
+  host.style.cssText = 'position:fixed;left:-10000px;top:0;width:794px;z-index:-1';
+  host.innerHTML = $('#rpScale').innerHTML;
+  document.body.appendChild(host);
+  try {
+    if(document.fonts && document.fonts.ready) await document.fonts.ready;
+    const { jsPDF } = window.jspdf; const doc = new jsPDF({unit:'mm', format:'a4'});
+    const pages = host.querySelectorAll('.rp');
+    for(let i=0;i<pages.length;i++){
+      const c = await html2canvas(pages[i], {scale:2, backgroundColor:'#FFFFFF', useCORS:true, logging:false});
+      if(i) doc.addPage();
+      doc.addImage(c.toDataURL('image/jpeg', 0.9), 'JPEG', 0, 0, 210, 297);
+    }
+    doc.save(`analise-${slug(SIM.nome)}${SIM.aluno ? '-' + slug(SIM.aluno) : ''}.pdf`);
+  } catch(e){ console.error(e); alert('Algo deu errado ao gerar o PDF. Tente de novo.'); }
+  finally { host.remove(); btn.textContent = txt; btn.disabled = false; }
+}
+
+window.addEventListener('error', ev => { const el = document.getElementById('simErr'); if(el && !document.getElementById('tab-sim').hidden) el.textContent = 'Erro na página: ' + ev.message; });
+async function initSim(){
+  buildSimForm();
+  document.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
+  $('#simForm').addEventListener('submit', onSimSubmit);
+  $('#btnAnalise').addEventListener('click', onSimSubmit);
+  $('#btnLevar').addEventListener('click', levarParaCronograma);
+  $('#btnSimPdf').addEventListener('click', baixarSimPDF);
+  $('#simHist').addEventListener('click', ev => {
+    const v = ev.target.closest('[data-ver]'), d = ev.target.closest('[data-del]');
+    if(v){ SIM = SIMS.find(x => x.id === v.dataset.ver); if(SIM) renderSim(); }
+    if(d){ const alvo = SIMS.find(x => x.id === d.dataset.del); if(!alvo) return;
+      SIMS = SIMS.filter(x => x.id !== alvo.id); saveSims(SIMS);
+      if(!SIMS.length){ SIM = null; $('#simRes').style.display = 'none'; return; }
+      if(SIM && SIM.id === alvo.id) SIM = SIMS[SIMS.length-1];
+      renderSim(); }
+  });
+  window.addEventListener('resize', fitReport);
+  mostrarAvisoCrono();
+  if(location.hash === '#simulado') showTab('sim');
+  LOGO_URL = await logoPNG();
+  document.querySelectorAll('.rp-logo').forEach(i => i.src = LOGO_URL || '');
+}
+
+try { if(window.self !== window.top) document.getElementById('iframeNotice').style.display = 'block'; } catch(e){ document.getElementById('iframeNotice').style.display = 'block'; }
+init();
+initSim();
+</script>
+</body>
+</html>
